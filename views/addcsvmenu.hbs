@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Adminty - Premium Admin Template by Colorlib </title>
+    <!-- [other meta tags and styles] -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Calendar with Dynamic Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<style>
+    .custom-select-wrapper {
+        position: relative;
+        user-select: none;
+    }
+
+    .custom-select {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .custom-select__trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        font-size: 20px;
+        font-weight: 300;
+        color: #fff;
+        height: 40px;
+        line-height: 40px;
+        background: #5e72e4;
+        cursor: pointer;
+    }
+
+    .custom-options {
+        position: absolute;
+        display: none;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border: 2px solid #5e72e4;
+        border-top: none;
+        background: #fff;
+        z-index: 2;
+    }
+
+    .custom-option {
+        position: relative;
+        display: block;
+        padding: 0 22px;
+        font-size: 18px;
+        font-weight: 300;
+        color: #333;
+        line-height: 40px;
+        cursor: pointer;
+    }
+
+    .custom-option:hover {
+        background: #5e72e4;
+        color: #fff;
+    }
+
+    .custom-file-upload {
+        margin-top: 20px;
+    }
+
+    .file-upload-btn {
+        background: #5e72e4;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #fileName {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+</style>
+<style>
+    .custom-file-upload {
+        display: block;
+        margin: 20px;
+    }
+
+    #fileName {
+        margin-left: 10px;
+    }
+
+    .custom-file-upload {
+        display: block;
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: fit-content;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #f8f8f8;
+        text-align: center;
+    }
+
+    #fileName {
+        margin-left: 10px;
+        font-size: 16px;
+        color: green;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <div class="card">
+                                            <div class="card-block">
+                                                <div class="wrapper wrapper-640">
+                                                    <div class="j-tabs-container">
+                                                        {{#if error_msg}}
+                                                        <div class="alert alert-danger background-danger">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <i class="icofont icofont-close-line-circled text-white"></i>
+                                                            </button>
+                                                            <strong>Error!</strong> {{error_msg}}
+                                                        </div>
+                                                        {{/if}}
+                                                        {{#if success_msg}}
+                                                        <div class="alert alert-success background-success">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <i class="icofont icofont-close-line-circled text-white"></i>
+                                                            </button>
+                                                            <strong>Success!</strong> {{success_msg}}
+                                                        </div>
+                                                        {{/if}}
+
+                                                        <div class="wrapper">
+                                                            <h4>Add Client's Menu</h4>
+                                                            <div class="rescalendar" id="my_calendar_en"></div>
+                                                        </div>
+
+                                                 <form action="/addcsvmenu" method="post" enctype="multipart/form-data">
+    <div class="form-group row" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+        <label class="col-sm-2 col-form-label">Select Client</label>
+        <div class="col-sm-10" style="width: 32%;">
+            <select name="userId" class="form-control">
+                <option value="" disabled selected>Select Client</option>
+                {{#each user}}
+                <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="form-group row" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="custom-file-upload" style="display: flex; flex-direction: column; align-items: center;">
+            <label for="fileUpload">Upload CSV</label>
+            <input type="file" id="fileUpload" name="csv" accept="text/csv" class="hidden">
+            <div id="fileName">No file chosen...</div>
+        </div>
+    </div>
+    <div class="form-group row" style="display: flex; flex-direction: column; align-items: center;">
+        <button type="submit" class="btn btn-primary">Add Menu</button>
+    </div>
+</form>
+
+                                                    </div>
+                                                        <div class="form-group row" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                                                  <div class="card-header">
+    <h5>Client Monthly Menu</h5>
+</div>
+</div>
+  <form action="/addcsvmenu" method="get">
+                                                        <div class="form-group row" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                                                            <label class="col-sm-2 col-form-label">Select Client</label>
+                                                            <div class="col-sm-10" style="width: 32%;">
+                                                                <select name="userId" class="form-control">
+                                                                    <option value="" disabled selected>Select Client</option>
+                                                                    {{#each user}}
+                                                                    <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                                                                    {{/each}}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                                                            <button type="submit" class="btn btn-primary">Get Filtered Data</button>
+                                                        </div>
+                                                    </form>
+  <div class="dt-responsive table-responsive">
+                                                                <table id="basic-btn"
+                                                                    class="table table-striped table-bordered nowrap text-center dataTable no-footer">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Sr.</th>
+                                                                            <th>Date</th>
+                                                                            <th>Meal Items</th>
+                                                                            <th>Category Name</th>
+                                                                            <th>Client Name</th>
+                                                                            {{!-- <th>Action</th> --}}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {{#each menus}}
+                                                                        <tr>
+                                                                            <td>{{inc @index}}</td>
+                                                                            <td>{{formatDateNormal this.date
+                                                                                "MM-DD-YYYY"}}
+                                                                            </td>
+                                                                            <td>
+                                                                                <ul class="custom-list">{{#each item}}
+                                                                                    <li>
+                                                                                        <span
+                                                                                            class="text">{{this.items}}</span>
+                                                                                    </li>{{/each}}
+                                                                                </ul>
+                                                                            </td>
+                                                                            <td>{{this.categoryId.name}}</td>
+                                                                            <td>{{this.userId.firstName}} {{this.userId.lastName}}</td>
+                                                                        </tr>
+                                                                        {{/each}}
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{>footer}}
+        </div>
+    </div>
+  <script>
+        document.getElementById('fileUpload').addEventListener('change', function (e) {
+            var fileName = e.target.files[0].name;
+            document.getElementById('fileName').textContent = 'File chosen: ' + fileName;
+            document.getElementById('fileName').style.color = '#4CAF50'; // Change color to indicate success
+        });
+
+        document.querySelector('.custom-file-upload').addEventListener('click', function () {
+            document.getElementById('fileUpload').click();
+        });
+    </script>
+</body>
+
+</html>

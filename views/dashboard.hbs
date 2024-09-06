@@ -1,0 +1,467 @@
+<!-- Mirrored from demo.dashboardpack.com/adminty-html/default/dashboard-analytics.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Mar 2022 11:53:53 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<head>
+
+
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .dasoard {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .text_div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+
+    .suhbmmary {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .Total_text {
+        width: 100%;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .week-orders {
+        padding: 1rem;
+        background-color: #3444BC;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .total-orders {
+        padding: 1rem;
+        background-color: #36AE22;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .number {
+
+        font-size: 3em;
+        color: white;
+        font-weight: bold;
+    }
+
+    .label {}
+
+    .actions button {
+        padding: 10px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    .actions button:hover {
+        background-color: #0056b3;
+    }
+
+    .recent-orders h2 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .recent-orders ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .recent-orders li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .Breakfast {
+        background-color: #36AE22;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .lunch {
+        background-color: #DA2727;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .pmsnck {
+        background-color: #3444BC;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .recent-orders .cancel {
+        background-color: #ff4136;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .recent-orders .cancel:hover {
+        background-color: #ff4136;
+    }
+
+    .icon {
+        font-size: 1.5em;
+    }
+</style>
+
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+            {{>header}}
+
+            <div id="sidebar" class="users p-chat-user showChat">
+                <div class="had-container">
+                    <div class="card card_main p-fixed users-main">
+                        <div class="user-box">
+                            <div class="chat-inner-header">
+                                <div class="back_chatBox">
+                                    <div class="right-icon-control">
+                                        <input type="text" class="form-control  search-text" placeholder="Search Friend"
+                                            id="search-friends">
+                                        <div class="form-icon">
+                                            <i class="icofont icofont-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-friend-list">
+                                <div class="media userlist-box" data-id="1" data-status="online"
+                                    data-username="Josephin Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Josephin Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                            src="../files/assets/images/avatar-3.jpg" alt="Generic placeholder image ">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Josephin Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="2" data-status="online"
+                                    data-username="Lary Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Lary Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Lary Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice"
+                                    data-toggle="tooltip" data-placement="left" title="Alice">
+                                    <a class="media-left" href="#!">
+                                        {{#each record}}
+                                        <img class="media-object img-radius" src="{{this.Image}}"
+                                            alt="Generic placeholder image">
+                                        {{/each}}
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alice</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia"
+                                    data-toggle="tooltip" data-placement="left" title="Alia">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alia</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen"
+                                    data-toggle="tooltip" data-placement="left" title="Suzen">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Suzen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text f-w-600" style="color: black">
+                                                                    {{totalOrders}}
+                                                                </h4>
+                                                                <h6 class="text m-b-0">Orders</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="ti-shopping-cart f-28 "></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" style="background: #36AE22;">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <a href="/reportList">
+                                                                    <p class="text-white m-b-0"
+                                                                        style="color: white !important" ;>
+                                                                        Order Management</p>
+                                                                </a>
+                                                            </div>
+                                                            <div class=" col-3 text-right">
+                                                                <i class="feather icon-trending-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-xl-3 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text f-w-600" style="color: black">{{user}}
+                                                                </h4>
+                                                                <h6 class="text m-b-0">User</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="icofont icofont-people f-28 "></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" style="
+    background: #36AE22;
+    ">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <a href="/adminuserlist">
+                                                                    <p class="text-white m-b-0"
+                                                                        style="color: white !important" ;>
+                                                                        User Management</p>
+                                                                </a>
+                                                            </div>
+                                                            <div class=" col-3 text-right">
+                                                                <i class="feather icon-trending-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text f-w-600" style="color: black">
+                                                                    {{totalItem}}
+                                                                </h4>
+                                                                <h6 class="text m-b-0">Items</h6>
+                                                            </div>
+                                                            {{!-- <span class="icon"><svg width="52" height="52"
+                                                                    viewBox="0 0 52 52" fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M12.5 0.6875C5.98791 0.6875 0.687468 6.74394 0.687468 14.1875C0.629444 16.6354 1.22411 19.0547 2.41037 21.1968C3.59664 23.3389 5.33174 25.1266 7.43747 26.3763V46.25C7.43747 47.5927 7.97084 48.8803 8.92024 49.8297C9.86964 50.7791 11.1573 51.3125 12.5 51.3125C13.8426 51.3125 15.1303 50.7791 16.0797 49.8297C17.0291 48.8803 17.5625 47.5927 17.5625 46.25V26.3763C19.6682 25.1266 21.4033 23.3389 22.5896 21.1968C23.7758 19.0547 24.3705 16.6354 24.3125 14.1875C24.3125 6.74394 19.012 0.6875 12.5 0.6875ZM15.2303 23.7539C14.9217 23.8815 14.6579 24.0977 14.4723 24.3753C14.2866 24.6529 14.1875 24.9793 14.1875 25.3132V46.25C14.1875 46.6976 14.0097 47.1268 13.6932 47.4432C13.3767 47.7597 12.9475 47.9375 12.5 47.9375C12.0524 47.9375 11.6232 47.7597 11.3067 47.4432C10.9903 47.1268 10.8125 46.6976 10.8125 46.25V25.3132C10.8124 24.9793 10.7133 24.6529 10.5277 24.3753C10.342 24.0977 10.0782 23.8815 9.76959 23.7539C7.99075 22.8875 6.50331 21.5209 5.48959 19.8217C4.47587 18.1225 3.9799 16.1644 4.06247 14.1875C4.06247 8.60356 7.84753 4.0625 12.5 4.0625C17.1524 4.0625 20.9375 8.60356 20.9375 14.1875C21.02 16.1644 20.5241 18.1225 19.5103 19.8217C18.4966 21.5209 17.0092 22.8875 15.2303 23.7539ZM49.625 0.6875C49.1774 0.6875 48.7482 0.86529 48.4317 1.18176C48.1153 1.49822 47.9375 1.92745 47.9375 2.375V19.25C47.9375 20.5927 47.4041 21.8803 46.4547 22.8297C45.5053 23.7791 44.2176 24.3125 42.875 24.3125C42.4274 24.3125 41.9982 24.4903 41.6817 24.8068C41.3653 25.1232 41.1875 25.5524 41.1875 26V46.25C41.1875 46.6976 41.0097 47.1268 40.6932 47.4432C40.3767 47.7597 39.9475 47.9375 39.5 47.9375C39.0524 47.9375 38.6232 47.7597 38.3067 47.4432C37.9903 47.1268 37.8125 46.6976 37.8125 46.25V26C37.8125 25.5524 37.6347 25.1232 37.3182 24.8068C37.0017 24.4903 36.5725 24.3125 36.125 24.3125C34.7823 24.3125 33.4946 23.7791 32.5452 22.8297C31.5958 21.8803 31.0625 20.5927 31.0625 19.25V2.375C31.0625 1.92745 30.8847 1.49822 30.5682 1.18176C30.2517 0.86529 29.8225 0.6875 29.375 0.6875C28.9274 0.6875 28.4982 0.86529 28.1817 1.18176C27.8653 1.49822 27.6875 1.92745 27.6875 2.375V19.25C27.6896 21.1944 28.3622 23.0786 29.5918 24.5849C30.8214 26.0912 32.5328 27.1274 34.4375 27.5187V46.25C34.4375 47.5927 34.9708 48.8803 35.9202 49.8297C36.8696 50.7791 38.1573 51.3125 39.5 51.3125C40.8426 51.3125 42.1303 50.7791 43.0797 49.8297C44.0291 48.8803 44.5625 47.5927 44.5625 46.25V27.5187C46.4671 27.1274 48.1785 26.0912 49.4081 24.5849C50.6377 23.0786 51.3103 21.1944 51.3125 19.25V2.375C51.3125 1.92745 51.1347 1.49822 50.8182 1.18176C50.5017 0.86529 50.0725 0.6875 49.625 0.6875Z"
+                                                                        fill="white" />
+                                                                    <path
+                                                                        d="M36.125 20.9375C36.5726 20.9375 37.0018 20.7597 37.3182 20.4432C37.6347 20.1268 37.8125 19.6976 37.8125 19.25V2.375C37.8125 1.92745 37.6347 1.49822 37.3182 1.18176C37.0018 0.86529 36.5726 0.6875 36.125 0.6875C35.6774 0.6875 35.2482 0.86529 34.9318 1.18176C34.6153 1.49822 34.4375 1.92745 34.4375 2.375V19.25C34.4375 19.6976 34.6153 20.1268 34.9318 20.4432C35.2482 20.7597 35.6774 20.9375 36.125 20.9375ZM42.875 20.9375C43.3226 20.9375 43.7518 20.7597 44.0682 20.4432C44.3847 20.1268 44.5625 19.6976 44.5625 19.25V2.375C44.5625 1.92745 44.3847 1.49822 44.0682 1.18176C43.7518 0.86529 43.3226 0.6875 42.875 0.6875C42.4274 0.6875 41.9982 0.86529 41.6818 1.18176C41.3653 1.49822 41.1875 1.92745 41.1875 2.375V19.25C41.1875 19.6976 41.3653 20.1268 41.6818 20.4432C41.9982 20.7597 42.4274 20.9375 42.875 20.9375Z"
+                                                                        fill="white" />
+                                                                </svg>
+                                                            </span> --}}
+                                                            <div class="col-4 text-right">
+                                                                <i class="icofont icofont-fork-and-knife f-28 "></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" style="
+    background: #36AE22;
+    ">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <a href="/getList?tab=0">
+                                                                    <p class="text-white m-b-0"
+                                                                        style="color: white !important" ;>
+                                                                        Item Management</p>
+                                                                </a>
+                                                            </div>
+                                                            <div class=" col-3 text-right">
+                                                                <i class="feather icon-trending-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-3 col-md-4">
+                                                <div class="card">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-8">
+                                                                <h4 class="text f-w-600" style="color: black">{{clinet}}
+                                                                </h4>
+                                                                <h6 class="text m-b-0">Clients</h6>
+                                                            </div>
+                                                            <div class="col-4 text-right">
+                                                                <i class="fa fa-users f-28 "></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer" style="background: #36AE22;">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-9">
+                                                                <a href="/clientList">
+                                                                    <p class="text-white m-b-0"
+                                                                        style="color: white !important" ;>
+                                                                        Client Management</p>
+                                                                </a>
+                                                            </div>
+                                                            <div class=" col-3 text-right">
+                                                                <i class="feather icon-trending-up text-white f-16"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-md-6">
+                                        <div id="chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+    <script>
+        function updateQuantity() {
+            // Get the updated quantity value
+            var updatedQuantity = document.getElementById('quantity').value;
+
+            // TODO: Add logic to update the quantity using AJAX or any other method
+
+            // Close the modal
+            $('#updateModal').modal('hide');
+        }
+    </script>
+
+
+
+
+</body>

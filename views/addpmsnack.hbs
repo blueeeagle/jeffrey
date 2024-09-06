@@ -1,0 +1,396 @@
+<head>
+    <title>Adminty - Premium Admin Template by Colorlib </title>
+
+
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/j-forms.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+    <style>
+        /* Add your custom styles for events with data */
+        .data-available {
+            color: green;
+            /* Change color as needed */
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+
+
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Add Pm Snake</h4>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="page-body">
+
+                                        <div class="card" style="    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2rem 1rem;">
+
+                                            <div class="col-xl-5 col-md-4">
+                                                <div id="calendar"></div>
+
+                                            </div>
+
+
+
+                                            <div class="left_card_box" style="width: 100%;">
+                                                <div class="left_card_info"
+                                                    style="display: flex;align-items:flex-end;justify-content: flex-end ;flex-direction: column; padding-right: 2rem">
+
+
+                                                    <div class="cheked_yes_box"
+                                                        style="display: flex;align-items: center;justify-content: flex-start;gap: 4.5rem;">
+                                                        <div class="yes_box"
+                                                            style="width: 30px; height : 15px ; background-color : black">
+
+                                                        </div>
+                                                        <span>Add Menu</span>
+                                                    </div>
+                                                    <div class="uncheked_box"
+                                                        style="display: flex;align-items: center;justify-content: flex-start;gap: 1rem">
+                                                        <div class="no_box"
+                                                            style="width: 30px; height : 15px ; border : 1px solid black">
+
+                                                        </div>
+                                                        <span>Pending Add Menu</span>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="card-block" style="    width: 100%">
+                                                    <div class="wrapper wrapper-640">
+                                                        <div class="j-tabs-container">
+
+                                                            <form action="/addpmsnack" method="post"
+                                                                class="j-forms" novalidate>
+                                                                <div class="content">
+                                                                    <div class="form-group form-primary">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text"
+                                                                                    style="background-color:#ffffff;">
+                                                                                    <i class="fa fa-calendar"
+                                                                                        style="color: #FD3E6C;"></i>
+                                                                                </span>
+
+                                                                            </div>
+                                                                            <label for="date" name="date" id="date"
+                                                                                class="form-control"> <b>
+                                                                                    Date</b></label>
+                                                                            <input type="date" id="date" name="date">
+                                                                        </div>
+
+
+
+                                                                        <div class="unit toclone-wid get-right toclone"
+                                                                            style="margin-top: 10px">
+                                                                            <div class="input-group">
+                                                                                <input type="text" placeholder="Item"
+                                                                                    name="option" class="txtBox">
+                                                                            </div>
+                                                                            <button type="button"
+                                                                                style="color: #fff; background-color: #FD3E6C"
+                                                                                class="btn btn-primary clone-btn-right clone">
+                                                                                <i class="icofont icofont-plus"></i>
+                                                                            </button>
+                                                                            <button type="button"
+                                                                                style="color: #fff; background-color: #FD3E6C"
+                                                                                class="btn btn-default clone-btn-right delete">
+                                                                                <i class="icofont icofont-minus"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary m-b-20 f-right"
+                                                                        style="background-color: #FD3E6C;">
+                                                                        Submit
+                                                                    </button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="styleSelector">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Event delegation for cloning
+            $("body").on("click", ".clone-btn-right.clone", function () {
+                const cloneContainer = $(this).closest(".unit.toclone-wid");
+                const clone = cloneContainer.clone(true);
+                cloneContainer.after(clone); // Insert the cloned element after the original
+            });
+
+            // Event delegation for deletion
+            $("body").on("click", ".clone-btn-right.delete", function () {
+                const item = $(this).closest(".unit.toclone-wid");
+                if (item && item.siblings(".unit.toclone-wid").length > 0) {
+                    item.remove();
+                }
+            });
+        });
+
+
+    </script>
+
+    <script>
+
+        "use strict";
+        const all_bookings = {{{ all_bookings }}}
+        $(document).ready(function () {
+            $('#external-events .fc-event').each(function () {
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when the user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true, // will cause the event to go back to its original position after the drag
+                    revertDuration: 0
+                });
+            });
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listMonth'
+                },
+                defaultDate: `${{ formattedDate }}`,
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: false,
+                droppable: false, // this allows things to be dropped onto the calendar
+                drop: function () {
+                    if ($('#checkbox2').is(':checked')) {
+                        $(this).remove();
+                    }
+                },
+
+                events: all_bookings,
+
+                eventRender: function (event, element) {
+                    // Check if the event's date exists in all_bookings
+                    const eventData = all_bookings.find((data) => data.date === event.start.format('YYYY-MM-DD'));
+                    console.log("eventData=>>", eventData)
+
+                    if (eventData) {
+                        // Event has data, show checked checkbox on this date
+                        element.find('.fc-content').prepend('<i class="fa fa-check checked-icon"></i>');
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        var myAPIdata = {{{ all_bookings }}};
+
+        function eventClicked() {
+            document.getElementById("form-event").classList.add("view-event"),
+                document
+                    .getElementById("event-title")
+                    .classList.replace("d-block", "d-none"),
+                document
+                    .getElementById("event-location")
+                    .classList.replace("d-block", "d-none"),
+                document
+                    .getElementById("event-description")
+                    .classList.replace("d-block", "d-none"),
+                document
+                    .getElementById("event-location-tag")
+                    .classList.replace("d-none", "d-block"),
+                document
+                    .getElementById("event-description-tag")
+                    .classList.replace("d-none", "d-block"),
+                document
+                    .getElementById("event-duration")
+                    .classList.replace("d-none", "d-block"),
+                document
+                    .getElementById("event-start-date")
+                    .classList.replace("d-none", "d-block"),
+                document.getElementById("btn-save-event").setAttribute("hidden", !0);
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            //API DATA........
+            console.log("Data......", myAPIdata);
+            var g = new bootstrap.Modal(document.getElementById("event-modal"), {
+                keyboard: !1,
+            }),
+                d =
+                    (document.getElementById("event-modal"),
+                        document.getElementById("modal-title")),
+                i = document.getElementById("form-event"),
+                v = null,
+                y = myAPIdata,
+                e = document.getElementById('calendar');
+
+            calendar = new FullCalendar.Calendar(e, {
+                timeZone: "local",
+                editable: !0,
+                droppable: !0,
+                selectable: !0,
+                navLinks: !0,
+                //initialView: r(),
+                themeSystem: "bootstrap",
+                headerToolbar: {
+                    left: "prev,next today",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+
+                },
+                events: myAPIdata,
+                eventClick: function (e) {
+                    document.getElementById("edit-event-btn").removeAttribute("hidden"),
+                        eventClicked(),
+                        g.show(),
+                        i.reset(),
+                        (v = e.event),
+                        (document.getElementById("event-title").innerHTML = void 0 === v.extendedProps.title
+                            ? ""
+                            : v.extendedProps.title),
+                        (document.getElementById("event-start-date").innerHTML = void 0 === v.extendedProps.start
+                            ? ""
+                            : v.extendedProps.start),
+                        (document.getElementById("event-location-tag").innerHTML =
+                            void 0 === v.extendedProps.appointmentType
+                                ? ""
+                                : v.extendedProps.appointmentType),
+                        (document.getElementById("event-description-tag").innerHTML =
+                            void 0 === v.extendedProps.description
+                                ? "No Description"
+                                : v.extendedProps.description),
+                        (document.getElementById("event-duration").innerHTML =
+                            void 0 === v.extendedProps.appointmentDuration
+                                ? "No Description"
+                                : v.extendedProps.appointmentDuration),
+                        (document.getElementById("event-title").value = v.title),
+                        (document.getElementById("event-location").value =
+                            void 0 === v.extendedProps.appointmentType
+                                ? ""
+                                : v.extendedProps.appointmentType),
+                        (document.getElementById("eventid").value = v.appointment_id);
+                }
+            });
+
+            calendar.render();
+        })
+    </script>
+    <script src='fullcalendar/dist/index.global.js'></script>
+
+
+
+</body>
+
+<!-- Mirrored from demo.dashboardpack.com/adminty-html/default/ready-tabs-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Mar 2022 11:55:59 GMT -->
+
+</html>

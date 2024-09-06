@@ -1,0 +1,920 @@
+<style>
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    #chart-daily,
+    #chart-weekly,
+    #chart-monthly,
+    #chart-custom {
+        max-width: 1000px;
+        margin: 35px auto;
+    }
+
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.29.0/dist/apexcharts.min.css">
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+
+            {{>header}}
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                {{!-- <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Today's Total Lunch Orders</h4>
+                                                        <span></span>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                            {{!-- <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="/"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="dashboard">Dashboard</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card">
+                                                    <form action="/reportsData" id="intervalForm" method="post" style="
+    margin-top: -5%;
+">
+                                                        <label for="dropdown">Select Type:</label>
+
+                                                        <select id="typeDropdown" name="type">
+                                                            <option value="" disabled selected>Select an option</option>
+                                                            <option value="mealsorder">Meals Ordered </option>
+                                                            <option value="mealsdeliver">Meals Delivered</option>
+                                                            <option value="totaldelivery">Total Deliveries</option>
+
+
+                                                        </select>
+
+                                                        <div id="mealCategoryDropdownWrapper" style="display: none;">
+                                                            <label for="mealCategoryDropdown">Select a Meal
+                                                                Category:</label>
+                                                            <select id="mealCategoryDropdown" name="catId">
+                                                                <option value="" disabled selected>Select an option
+                                                                </option>
+
+                                                                <!-- Populate with meal categories -->
+                                                                {{#each catlist}}
+                                                                <option value="{{this.name}}">{{this.name}} </option>
+                                                                {{/each}}
+                                                                <!-- Add more options here if needed -->
+                                                            </select>
+                                                        </div>
+
+                                                        <div id="valueDropdownWrapper" style="display: none;">
+                                                            <label for="dropdown">Select a Driver:</label>
+                                                            <select id="valueDropdown" name="driverId">
+                                                                {{#each drivers}}
+                                                                <option value="{{this._id}}">{{this.firstName}}
+                                                                    {{this.lastName}} </option>
+                                                                {{/each}}
+
+                                                                <!-- Add more options here if needed -->
+                                                            </select>
+                                                        </div>
+                                                        <label for="userDropdown">Select a Client:</label>
+                                                        <select id="userDropdown" name="userId">
+                                                            <option value="" disabled selected>Select a Client</option>
+                                                            {{#each users}}
+                                                            <option value="{{this._id}}">{{this.firstName}}
+                                                                {{this.lastName}}</option>
+                                                            {{/each}}
+                                                        </select>
+<label for="locationCheckboxes">Select Locations:</label>
+<div id="locationCheckboxes">
+    <!-- Location checkboxes will be populated dynamically -->
+</div>
+
+                                                        <label for="dropdown">Select a Period of Time:</label>
+                                                        <select id="dropdown" name="value">
+                                                            <option value="" disabled selected>Select an option</option>
+                                                            <option value="Daily">Daily</option>
+                                                            <option value="Weekly">Weekly</option>
+                                                            <option value="Monthly">Monthly</option>
+                                                            {{!-- <option value="3Month">3 Month</option>
+                                                            <option value="6Month">6 Month</option>
+                                                            <option value="9Month">9 Month</option>
+                                                            <option value="Yearly">Yearly</option> --}}
+
+                                                        </select>
+                                                        <label for="startDate">Start Date:</label>
+                                                        <input type="date" id="startDate" name="startDate">
+
+                                                        <label for="endDate">End Date:</label>
+                                                        <input type="date" id="endDate" name="endDate">
+                                                        <button type="submit">Submit</button>
+                                                    </form>
+                                                    <div class="card-block">
+                                                        <div id="chart-daily"></div>
+                                                        <div id="chart-weekly"></div>
+                                                        <div id="chart-monthly"></div>
+                                                        <div id="chart-custom"></div>
+                                                    </div>
+                                                    {{!-- CSV Data --}}
+                                                    {{!-- <form id="csvForm" action="/reportsData-CSV" method="POST">
+    <input type="hidden" name="locationNames" id="locationNamesInput">
+    <button type="button" style="float: right;" onclick="submitCSVForm()">CSV Data</button>
+</form>
+                                                    <div class="card-block">
+                                                        <div class="dt-responsive table-responsive">
+                                                            <table id="basic-btn"
+                                                                class="table table-striped table-bordered nowrap text-center">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Order Code</th>
+                                                                        <th>Order Created</th>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Location</th>
+                                                                        <th>Assign to Driver</th>
+                                                                        <th>Order Status</th>
+                                                                        <th>Delivery Date</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {{#each data}}
+                                                                    <tr>
+                                                                        <td>{{this.orderCode}}</td>
+                                                                        <td>{{formatDate this.created_at "MM-DD-YYYY"}}
+                                                                        </td>
+                                                                        <td>{{this.userId.firstName}}
+                                                                            {{this.userId.lastName}}</td>
+                                                                        <td>{{this.addressId.locationName}}</td>
+                                                                        <td>{{this.isOrderAssign}}</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="label  {{#if (if_eq this.orderStatus 'Cancelled')}}label-danger{{/if}}{{#if (if_eq this.orderStatus 'Upcoming')}}label-primary{{/if}}{{#if (if_eq this.orderStatus 'Delivered')}}label-success{{/if}} text-uppercase">{{this.orderStatus}}</span>
+                                                                        </td>
+                                                                        <td>{{formatDateNormal this.orderDate
+                                                                            "MM-DD-YYYY"}}</td>
+                                                                    </tr>
+                                                                    {{/each}}
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div> --}}
+                                                        <form id="csvForm" action="/reportsData-CSV" method="POST">
+    <input type="hidden" name="locationNames" id="locationNamesInput">
+    <button type="button" style="float: right;" onclick="submitCSVForm()">Filtered CSV Download</button>
+</form>
+
+<div class="card-block">
+    <div class="dt-responsive table-responsive">
+        <table id="basic-btn" class="table table-striped table-bordered nowrap text-center">
+            <thead>
+                <tr>
+                    <th>Order Code</th>
+                    <th>Order Created</th>
+                    <th>Customer Name</th>
+                    <th>Location</th>
+                    <th>Assign to Driver</th>
+                    <th>Order Status</th>
+                    <th>Delivery Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td>{{this.orderCode}}</td>
+                    <td>{{formatDate this.created_at "MM-DD-YYYY"}}</td>
+                    <td>{{this.userId.firstName}} {{this.userId.lastName}}</td>
+                    <td class="locationName">{{this.addressId.locationName}}</td>
+                    <td>{{this.isOrderAssign}}</td>
+                    <td>
+                        <span class="label {{#if (if_eq this.orderStatus 'Cancelled')}}label-danger{{/if}}{{#if (if_eq this.orderStatus 'Upcoming')}}label-primary{{/if}}{{#if (if_eq this.orderStatus 'Delivered')}}label-success{{/if}} text-uppercase">{{this.orderStatus}}</span>
+                    </td>
+                    <td>{{formatDateNormal this.orderDate "MM-DD-YYYY"}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+                                                        <div class="card-block">
+                                                            <h3>Meal Category Counts</h3>
+                                                            <ul>
+                                                                {{#each mealCategoryCounts}}
+                                                                <li>{{@key}}: {{this}}</li>
+                                                                {{/each}}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    {{>footer}}
+    </div>
+    </div>
+
+    <script>
+      {{!-- CSV --}}
+      function submitCSVForm() {
+    let locationNames = [];
+    
+    // Select all td elements with class 'locationName' and push their text content into locationNames array
+    document.querySelectorAll('.locationName').forEach(function(td) {
+        locationNames.push(td.textContent.trim());
+    });
+
+    console.log("locationNames>>>>>>>>>>>>>>>>", locationNames);
+    
+    // Update the hidden input with the JSON string of locationNames
+    document.getElementById('locationNamesInput').value = JSON.stringify(locationNames);
+    
+    // Submit the form data using fetch with JSON body
+    fetch('/reportsData-CSV', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ locationNames: locationNames }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 1) {
+            // CSV generated successfully, initiate download from the S3 URL
+            const link = document.createElement('a');
+            link.href = data.data; // Use the S3 URL returned from the server
+            link.download = 'reportsData.csv'; // Optional: You can specify a file name here
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('Failed to generate CSV: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+      {{!-- CSV End --}}
+        $(document).ready(function () {
+            $('#typeDropdown').change(function () {
+                const selectedType = $(this).val();
+
+                // Hide both dropdowns initially
+                $('#mealCategoryDropdownWrapper').hide();
+                $('#valueDropdownWrapper').hide();
+
+                // Show dropdowns based on selected type
+                if (selectedType === 'mealsorder') {
+                    $('#mealCategoryDropdownWrapper').show(); // Show meal category dropdown
+                } else if (selectedType === 'totaldelivery') {
+                    $('#valueDropdownWrapper').show(); // Show value dropdown
+                }
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("userDropdown").addEventListener("change", function () {
+            var userId = this.value;
+            var userLocations = JSON.parse('{{userLocations}}'.replace(/&quot;/g, '"'));
+            var locationDropdown = document.getElementById("locationDropdown");
+            locationDropdown.innerHTML = '<option value="" disabled selected>Select an option</option>';
+            if (userId && userLocations[userId]) {
+                userLocations[userId].forEach(location => {
+                    var option = document.createElement("option");
+                    option.value = location;
+                    option.textContent = location;
+                    locationDropdown.appendChild(option);
+                });
+            }
+        });
+        document.getElementById('intervalForm').addEventListener('submit', function (e) {
+            var formElements = this.elements;
+            for (var i = 0; i < formElements.length; i++) {
+                if (!formElements[i].value) {
+                    formElements[i].disabled = true;
+                }
+            }
+            var driverIdField = document.getElementById('valueDropdown');
+            if ($('#typeDropdown').val() !== 'totaldelivery') {
+                driverIdField.disabled = true;
+            } else {
+                driverIdField.disabled = false;
+            }
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+{{!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Data from the server
+    const dailyOrders = JSON.parse('{{{ dailyOrders }}}' || '[]');
+    const counts = JSON.parse('{{{ counts }}}' || '[]');
+    const startDate = '{{{ startDate }}}';
+    const endDate = '{{{ endDate }}}';
+    const value = '{{{ value }}}';
+    const type = '{{{ type }}}';
+
+    // Log data for debugging
+    console.log("Daily Orders:", dailyOrders);
+    console.log("Counts:", counts);
+    console.log("Start Date:", startDate);
+    console.log("End Date:", endDate);
+    console.log("Value:", value);
+    console.log("Type:", type);
+
+    // Generate Daily Orders Chart
+    if (value === 'Daily') {
+      const hours = Array.from({ length: 24 }, (_, i) => `${i}:00`);
+      const dailyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: dailyOrders
+        }],
+        xaxis: {
+          categories: hours
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Daily Orders by Hour',
+          align: 'left'
+        }
+      };
+
+      var dailyOrdersChart = new ApexCharts(document.querySelector("#chart-daily"), dailyOrdersOptions);
+      dailyOrdersChart.render();
+    }
+
+    // Generate Weekly Orders Chart
+    if (value === 'Weekly') {
+      const categories = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      const weeklyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: counts
+        }],
+        xaxis: {
+          categories: categories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Weekly Orders',
+          align: 'left'
+        }
+      };
+
+      var weeklyOrdersChart = new ApexCharts(document.querySelector("#chart-weekly"), weeklyOrdersOptions);
+      weeklyOrdersChart.render();
+    }
+
+    // Generate Monthly Orders Chart
+    if (value === 'Monthly') {
+      const categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      const monthlyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: counts
+        }],
+        xaxis: {
+          categories: categories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Monthly Orders',
+          align: 'left'
+        }
+      };
+
+      var monthlyOrdersChart = new ApexCharts(document.querySelector("#chart-monthly"), monthlyOrdersOptions);
+      monthlyOrdersChart.render();
+    }
+
+    // Generate Custom Date Range Orders Chart
+    if (startDate && endDate) {
+      const dateCategories = [];
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const date = new Date(start);
+
+      while (date <= end) {
+        dateCategories.push(date.toISOString().split('T')[0]);
+        date.setDate(date.getDate() + 1);
+      }
+
+      const customOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: dailyOrders
+        }],
+        xaxis: {
+          categories: dateCategories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Orders from ' + startDate + ' to ' + endDate,
+          align: 'left'
+        }
+      };
+
+      var customOrdersChart = new ApexCharts(document.querySelector("#chart-custom"), customOrdersOptions);
+      customOrdersChart.render();
+    }
+  });
+</script> --}}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Data from the server
+    const dailyOrders = JSON.parse('{{{ dailyOrders }}}' || '[]');
+    const counts = JSON.parse('{{{ counts }}}' || '[]');
+    const startDate = '{{{ startDate }}}';
+    const endDate = '{{{ endDate }}}';
+    const value = '{{{ value }}}';
+    const type = '{{{ type }}}';
+
+    // Log data for debugging
+    console.log("Daily Orders:", dailyOrders);
+    console.log("Counts:", counts);
+    console.log("Start Date:", startDate);
+    console.log("End Date:", endDate);
+    console.log("Value:", value);
+    console.log("Type:", type);
+
+    // Helper function to export data to CSV
+    function exportToCSV(data, categories, title) {
+      let csvContent = `data:text/csv;charset=utf-8,`;
+      csvContent += 'Date,Orders\n'; // Header row
+
+      categories.forEach((category, index) => {
+        csvContent += `${category},${data[index] || 0}\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `${title}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Generate Daily Orders Chart
+    if (value === 'Daily') {
+      const hours = Array.from({ length: 24 }, (_, i) => `${i}:00`);
+      const dailyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: dailyOrders
+        }],
+        xaxis: {
+          categories: hours
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Daily Orders by Hour',
+          align: 'left'
+        }
+      };
+
+      var dailyOrdersChart = new ApexCharts(document.querySelector("#chart-daily"), dailyOrdersOptions);
+      dailyOrdersChart.render();
+
+      // Add export button
+      const exportButton = document.createElement('button');
+      exportButton.textContent = 'Export Daily Orders CSV';
+      exportButton.onclick = () => exportToCSV(dailyOrders, hours, 'Daily Orders');
+      document.querySelector("#chart-daily").appendChild(exportButton);
+    }
+
+    // Generate Weekly Orders Chart
+    if (value === 'Weekly') {
+      const categories = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+      const weeklyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: counts
+        }],
+        xaxis: {
+          categories: categories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Weekly Orders',
+          align: 'left'
+        }
+      };
+
+      var weeklyOrdersChart = new ApexCharts(document.querySelector("#chart-weekly"), weeklyOrdersOptions);
+      weeklyOrdersChart.render();
+
+      // Add export button
+      const exportButton = document.createElement('button');
+      exportButton.textContent = 'Export Weekly Orders CSV';
+      exportButton.onclick = () => exportToCSV(counts, categories, 'Weekly Orders');
+      document.querySelector("#chart-weekly").appendChild(exportButton);
+    }
+
+    // Generate Monthly Orders Chart
+    if (value === 'Monthly') {
+      const categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      const monthlyOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: counts
+        }],
+        xaxis: {
+          categories: categories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Monthly Orders',
+          align: 'left'
+        }
+      };
+
+      var monthlyOrdersChart = new ApexCharts(document.querySelector("#chart-monthly"), monthlyOrdersOptions);
+      monthlyOrdersChart.render();
+
+      // Add export button
+      const exportButton = document.createElement('button');
+      exportButton.textContent = 'Export Monthly Orders CSV';
+      exportButton.onclick = () => exportToCSV(counts, categories, 'Monthly Orders');
+      document.querySelector("#chart-monthly").appendChild(exportButton);
+    }
+
+    // Generate Custom Date Range Orders Chart
+    if (startDate && endDate) {
+      const dateCategories = [];
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const date = new Date(start);
+
+      while (date <= end) {
+        dateCategories.push(date.toISOString().split('T')[0]);
+        date.setDate(date.getDate() + 1);
+      }
+
+      const customOrdersOptions = {
+        chart: {
+          type: 'bar',
+          height: 350
+        },
+        series: [{
+          name: 'Orders',
+          data: dailyOrders
+        }],
+        xaxis: {
+          categories: dateCategories
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return parseInt(value);
+            }
+          }
+        },
+        title: {
+          text: 'Orders from ' + startDate + ' to ' + endDate,
+          align: 'left'
+        }
+      };
+
+      var customOrdersChart = new ApexCharts(document.querySelector("#chart-custom"), customOrdersOptions);
+      customOrdersChart.render();
+
+      // Add export button
+      const exportButton = document.createElement('button');
+      exportButton.textContent = 'Export Custom Date Range Orders CSV';
+      exportButton.onclick = () => exportToCSV(dailyOrders, dateCategories, 'Custom Date Range Orders');
+      document.querySelector("#chart-custom").appendChild(exportButton);
+    }
+  });
+</script>
+
+{{!-- <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/getreportsData',
+            method: 'GET',
+            success: function (response) {
+                if (response.success) {
+                    // Populate drivers dropdown
+                    var driverDropdown = $("#driverDropdown");
+                    driverDropdown.empty();
+                    driverDropdown.append('<option value="" disabled selected>Select a driver</option>');
+                    response.drivers.forEach(function (driver) {
+                        var driverName = `${driver.firstName} ${driver.lastName}`;
+                        driverDropdown.append('<option value="' + driverName + '">' + driverName + '</option>');
+                    });
+
+                    // Populate users dropdown
+                    var userDropdown = $("#userDropdown");
+                    userDropdown.empty();
+                    userDropdown.append('<option value="" disabled selected>Select a user</option>');
+                    response.users.forEach(function (user) {
+                        var userName = `${user.firstName} ${user.lastName}`;
+                        userDropdown.append('<option value="' + user._id + '">' + userName + '</option>');
+                    });
+
+                    // Populate categories dropdown
+                    var categoryDropdown = $("#mealCategoryDropdown");
+                    categoryDropdown.empty();
+                    categoryDropdown.append('<option value="" disabled selected>Select a category</option>');
+                    response.categories.forEach(function (category) {
+                        categoryDropdown.append('<option value="' + category.name + '">' + category.name + '</option>');
+                    });
+
+                    // Handle user locations when a user is selected
+                    $("#userDropdown").change(function () {
+                        var userId = $(this).val();
+                        var locationDropdown = $("#locationDropdown");
+                        locationDropdown.empty();
+                        locationDropdown.append('<option value="" disabled selected>Select a location</option>');
+                        
+                        if (response.userLocations[userId]) {
+                            response.userLocations[userId].forEach(function (location) {
+                                locationDropdown.append('<option value="' + location + '">' + location + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    alert("Failed to fetch report data.");
+                }
+            },
+            error: function () {
+                alert("An error occurred while fetching the report data.");
+            }
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/getreportsData',
+            method: 'GET',
+            success: function (response) {
+                if (response.success) {
+                    // Populate drivers dropdown
+                    var driverDropdown = $("#driverDropdown");
+                    driverDropdown.empty();
+                    driverDropdown.append('<option value="" disabled selected>Select a driver</option>');
+                    response.drivers.forEach(function (driver) {
+                        var driverName = `${driver.firstName} ${driver.lastName}`;
+                        driverDropdown.append('<option value="' + driverName + '">' + driverName + '</option>');
+                    });
+
+                    // Populate users dropdown
+                    var userDropdown = $("#userDropdown");
+                    userDropdown.empty();
+                    userDropdown.append('<option value="" disabled selected>Select a user</option>');
+                    response.users.forEach(function (user) {
+                        var userName = `${user.firstName} ${user.lastName}`;
+                        userDropdown.append('<option value="' + user._id + '">' + userName + '</option>');
+                    });
+
+                    // Populate categories dropdown
+                    var categoryDropdown = $("#mealCategoryDropdown");
+                    categoryDropdown.empty();
+                    categoryDropdown.append('<option value="" disabled selected>Select a category</option>');
+                    response.categories.forEach(function (category) {
+                        categoryDropdown.append('<option value="' + category.name + '">' + category.name + '</option>');
+                    });
+
+                    // Handle user locations when a user is selected
+                    $("#userDropdown").change(function () {
+                        var userId = $(this).val();
+                        var locationCheckboxesDiv = $("#locationCheckboxes");
+                        locationCheckboxesDiv.empty();
+                        
+                        if (response.userLocations[userId]) {
+                            response.userLocations[userId].forEach(function (location) {
+                                var checkboxId = 'location_' + location.replace(/\s+/g, '_'); // Unique ID for each checkbox
+                                
+                                var checkbox = $('<input>').attr({
+                                    type: 'checkbox',
+                                    id: checkboxId,
+                                    name: 'locationName',
+                                    value: location
+                                });
+                                
+                                var label = $('<label>').attr('for', checkboxId).text(location);
+                                
+                                locationCheckboxesDiv.append(checkbox).append(label).append('<br>');
+                            });
+                        }
+                    });
+                } else {
+                    alert("Failed to fetch report data.");
+                }
+            },
+            error: function () {
+                alert("An error occurred while fetching the report data.");
+            }
+        });
+    });
+</script>
+
+    <script>
+        function updateForm() {
+            // Get the value from the input field
+            var updatedValue = document.getElementById('updateField').value;
+
+            // Make an AJAX request to update the form on the server
+            // You need to implement the server-side logic for updating the form
+            // This could involve using fetch, jQuery.ajax, or any other AJAX method
+
+            // After the form is updated, close the modal
+            $('#updateModal').modal('hide');
+        }
+    </script>
+
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        let queryString = urlParams.get('value');
+        document.getElementById("dropdown").querySelector("option[value='" + queryString + "']").selected = true;
+    </script>
+
+</body>

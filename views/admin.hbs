@@ -1,0 +1,176 @@
+<style>
+    .login-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Adjust the alpha value (0.5) to change opacity */
+    }
+</style>
+
+<body class="fix-menu">
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="login-block">
+        <div class="login-overlay"></div> <!-- Overlay for background -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <form class="md-float-material form-material" method="post" action="/">
+                        <div class="text-center">
+
+                            {{!-- <img src="../files/assets/images/logo.png" alt="logo.png"> --}}
+                        </div>
+                        <div class="auth-box card">
+                            <div class="card-block" style="     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 2px solid #fd3e6c;
+    background: linear-gradient(to bottom, #fff 20%, #fff 100%);
+    border-radius: 6px;
+;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center">
+                                            <img src="/assets/images/LoginLogo.png" alt="logo.png" class="text-center"
+                                                style="width: 50%;aspect-ratio: 3/2;object-fit: contain;" />
+
+                                        </div>
+
+                                        <br>
+                                        {{#if error}}
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong> Oops.....! {{error}}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        {{/if}}
+                                        {{#if success_msg}}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong>{{success_msg}}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="background-color: #FD3E6C;">
+                                                <i class="fa fa-envelope" style="color:white;"></i>
+                                            </span>
+
+                                        </div>
+                                        <input type="email" name="email" class="form-control" required=""
+                                            placeholder="Your Email Address">
+                                        <span class="form-bar"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-primary">
+                                    <div class="input-group">
+                                        <input type="password" name="password" id="passwordField" class="form-control"
+                                            required="" placeholder="Your Password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"
+                                                style="background-color:#FD3E6C; cursor: pointer; color:#fff"
+                                                onclick="togglePassword()">
+                                                <i id="togglePasswordIcon" class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <button type="submit"
+                                            class="btn btn-prmary btn-md btn-block waves-effect waves-light text-center m-b-20"
+                                            style="    color: white;
+    border-radius: 6px;
+    background-color: #fd3e6c ; ">Sign in
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                                </p>
+                                <div class="row">
+
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Add this in the <head> section of your HTML -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Add this before the closing </body> tag -->
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById('passwordField');
+            var togglePasswordIcon = document.getElementById('togglePasswordIcon');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                togglePasswordIcon.classList.remove('fa-eye');
+                togglePasswordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                togglePasswordIcon.classList.remove('fa-eye-slash');
+                togglePasswordIcon.classList.add('fa-eye');
+            }
+        }
+
+    </script>
+
+</body>

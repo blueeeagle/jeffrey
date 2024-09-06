@@ -1,0 +1,327 @@
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                {{!-- <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Today's Total Lunch Orders</h4>
+                                                        <span></span>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="/"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="dashboard">Dashboard</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        {{#if error_msg}}
+                                                        <div class="alert alert-danger background-danger">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <i
+                                                                    class="icofont icofont-close-line-circled text-white"></i>
+                                                            </button>
+                                                            <strong>Error!</strong> {{error_msg}}
+                                                        </div>
+                                                        {{/if}}
+                                                        {{#if success_msg}}
+                                                        <div class="alert alert-success background-success">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <i
+                                                                    class="icofont icofont-close-line-circled text-white"></i>
+                                                            </button>
+                                                            <strong>Success!</strong> {{success_msg}}
+                                                        </div>
+                                                        {{/if}}
+                                                        <div class="card-header">
+                                                            <h4 class="card-title mb-0">Notifications</h4>
+                                                        </div>
+
+                                                        <!-- end card header -->
+
+                                                        <div class="card-body">
+                                                            <div id="customerList">
+                                                                <div class="row">
+                                                                    <div
+                                                                        class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                        <div
+                                                                            style="display: flex; justify-content: space-between;align-items: center;">
+                                                                            <div class="my-3" style="text-align: end;">
+
+                                                                                <button type="button"
+                                                                                    style="background-color: #d0006e;border-color:#BB765A"
+                                                                                    class="btn btn-success"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#deleteRecordModal">Clear
+                                                                                    All</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="list-group"
+                                                                            style="display: flex; gap:10px;">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="modal fade" id="deleteRecordModal"
+                                                                    tabindex="-1" role="dialog">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title">Delete
+                                                                                    Record
+                                                                                </h4>
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                    <span
+                                                                                        aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <h5>Confirmation</h5>
+                                                                                <p>Are you sure you want to delete
+                                                                                    this record?</p>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-default waves-effect "
+                                                                                    data-dismiss="modal">Cancle</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                                    id="confirmDeleteBtn">Delete</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- end card -->
+                                                    </div>
+                                                    <!-- end col -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript">
+        // Function to update the counter values
+        function updateCounterValues() {
+            function getCurrentPagePath() {
+                return window.location.pathname;
+            }
+            $.ajax({
+                url: 'https://appadmin.jefferyscatering.com/notificationsList', // Change the endpoint URL if needed
+                method: 'GET',
+                success: function (data) {
+
+                    // Update the counter values
+                    let myNotifications = data.notification;
+
+                    let myDiv = $('.list-group')
+                    let notificationHtml = '';
+
+                    myNotifications.map((item) => {
+
+                        //let link = `/orderviewlist?orderId=${item.orderId._id}`; // Update with the correct URL for
+
+                        let link;
+                        if (item.notificationType === 'new_driver_registration') {
+                            link = '/driversList';
+                        } else if (item.notificationType === 'new_client_registration') {
+                            link = '/clientList';
+                        } else {
+                            link = item.orderId ? `/orderviewlist?orderId=${item.orderId._id}` : '#';
+                        }
+
+                        const notificationTimeAgo = moment(item.created_at).fromNow();
+                        notificationHtml += `
+<div class="d-flex align-items-center">
+    <a href="${link}" class="list-group-item list-group-item-action" style="
+    position: relative;
+">
+        <div class="float-end" style="text-align: end;">
+            ${item.isReadByReceiver ? "Read" : "Pending"}
+        </div>
+        <form action="/deleteAdminNotificationsOne" method="POST" style="padding: 1rem 0rem;position: absolute;right: 15px;top: 29px;">
+        <input type ="hidden" name="ID" value ="${item._id}" />
+        <button type="submit" class="btn w-sm btn-danger" style="background-color: #d0006e;border-radius: 20px;width: 87%;align-items: center;"
+                                                                        id="delete-record"><i class="fa fa-trash"></i></button>
+        </form>
+        <div class="d-flex mb-2 align-items-center" style="gap: 2rem;">
+            <div class="flex-shrink-0" style="width: 100px;height: 100px;background: aliceblue;align-items: center;justify-content: center;display: flex;border-radius: 50%;overflow: hidden;">
+                <img src="${item.senderId_image}" alt="" class="avatar-sm rounded-circle" style="width: 100%;aspect-ratio: 3/3;object-fit: contain;"/>
+            </div>
+            <div class="flex-grow-1 ms-3">
+                <h5 class="list-title fs-15 mb-1">${item.senderId_name}</h5>
+                <p class="list-text mb-0 fs-12">${notificationTimeAgo}</p>
+                <p class="list-text mb-0">${item.notificationBody}</p>
+                 ${item.orderId ? `
+                <p class="list-text mb-0"><b>${item.orderId.addressId.locationName}</b> ${item.orderId.addressId.streetAddress}, ${item.orderId.addressId.city}, ${item.orderId.addressId.state}, ${item.orderId.addressId.zipCode}</p>` : ''}
+            </div>
+        </div>
+    </a>
+</div>
+`;
+
+
+                    });
+                    // Set the HTML content of myDiv to the new data
+                    myDiv.html(notificationHtml);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching counter values:', error);
+                }
+            });
+        }
+        // Poll for updates every 10 seconds
+        //setInterval(updateCounterValues, 1800000);
+        window.addEventListener('load', updateCounterValues);
+
+        function getSelectedNotificationIds() {
+            const selectedCheckboxes = document.querySelectorAll('.notification-checkbox:checked');
+            const selectedIds = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+            console.log("selected......")
+            // Now, `selectedIds` contains all the selected notification IDs
+            return selectedIds;
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        function getCurrentPagePath() {
+            console.log("local.....", window.location.pathname)
+            return window.location.pathname;
+        }
+        function updateNotification() {
+            // Send an AJAX request to your server
+            fetch('https://appadmin.jefferyscatering.com/readNotifications', {
+                method: 'POST', // Use PUT or POST depending on your server implementation
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ isReadByReceiver: true }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("read Notification.......")
+                        // Update the client-side UI to reflect that the notification has been marked as read
+                        //document.querySelector('.notificationcount').textContent = '0';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error updating notification:', error);
+                });
+        }
+
+        // Attach the event listener to the sidebar link
+        window.addEventListener('load', updateNotification);
+    </script>
+
+    <script type="text/javascript">
+        // jQuery code to handle delete confirmation button click
+        $('#confirmDeleteBtn').on('click', function () {
+            // Perform the API call to delete all notifications
+            fetch('https://appadmin.jefferyscatering.com/deleteAdminNotifications', {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // Close the modal after the API call is triggered
+                        console.log('All notifications deleted successfully');
+                        $('#deleteRecordModal').modal('hide');
+                        // Handle success - update UI or perform any actions needed
+                    } else {
+                        console.error('Failed to delete notifications');
+                        // Handle failure
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting notifications:', error);
+                    // Handle error
+                });
+        });
+
+    </script>
+</body>

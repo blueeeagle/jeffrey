@@ -1,0 +1,428 @@
+<style type="text/css">
+    /* Updated CSS */
+    .file-upload {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .file-upload-box {
+        width: 100%;
+        height: 100%;
+        border: 2px dashed #ccc;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .file-upload-box img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        object-fit: contain;
+        /* Ensure image fits without distortion */
+    }
+
+    .camera-icon {
+        font-size: 40px;
+    }
+
+    .visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+</style>
+
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    {{#if error_msg}}
+                                                    <div class="alert alert-danger background-danger">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <i
+                                                                class="icofont icofont-close-line-circled text-white"></i>
+                                                        </button>
+                                                        <strong>Error!</strong> {{error_msg}}
+                                                    </div>
+                                                    {{/if}}
+                                                    {{#if success_msg}}
+                                                    <div class="alert alert-success background-success">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <i
+                                                                class="icofont icofont-close-line-circled text-white"></i>
+                                                        </button>
+                                                        <strong>Success!</strong> {{success_msg}}
+                                                    </div>
+                                                    {{/if}}
+                                                    <h5>Add New Register Driver</h5>
+                                                    <div class="card-header-right">
+                                                        <i class="icofont icofont-spinner-alt-5"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <h4 class="sub-title">Basic Information</h4>
+                                                    <form action="/updateDriver" method="post"
+                                                        enctype="multipart/form-data">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">First Name</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="firstName" class="form-control"
+                                                                    placeholder="Enter First Name"
+                                                                    value="{{data.firstName}}">
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" name="driverId" value="{{data._id}}" />
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Last Name</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="lastName" class="form-control"
+                                                                    placeholder="Enter Last Name"
+                                                                    value="{{data.lastName}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Email</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" name="email" class="form-control"
+                                                                    placeholder="Enter Email" value="{{data.email}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Mobile Number</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="mobileNumber"
+                                                                    class="form-control"
+                                                                    placeholder="Enter mobile number"
+                                                                    value="{{data.mobileNumber}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Address Line
+                                                                1</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="address1" class="form-control"
+                                                                    placeholder="Enter address"
+                                                                    value="{{data.address1}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Address Line
+                                                                2</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="address2" class="form-control"
+                                                                    placeholder="Enter address"
+                                                                    value="{{data.address2}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6">
+                                                                <label class="col-sm-2 col-form-label">City</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="city" class="form-control"
+                                                                        placeholder="Enter city" value="{{data.city}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <label class="col-sm-2 col-form-label">State</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="state" class="form-control"
+                                                                        placeholder="Enter state"
+                                                                        value="{{data.state}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6">
+                                                                <label class="col-sm-2 col-form-label">Zip code
+                                                                    2</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="zipCode"
+                                                                        class="form-control" placeholder="Enter zipCode"
+                                                                        value="{{data.zipCode}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{!-- <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Password</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="password" name="password"
+                                                                    class="form-control" placeholder="Password input">
+                                                            </div>
+                                                        </div> --}}
+                                                        <h4 class="sub-title">Add Vehicle</h4>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Vehicle Brand</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="vehicleBrand"
+                                                                    class="form-control"
+                                                                    placeholder="Enter Vehicle Brand"
+                                                                    value="{{data.vehicle.vehicleBrand}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Vehicle Model</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="vehicleModel"
+                                                                    class="form-control"
+                                                                    placeholder="Enter Vehicle Model"
+                                                                    value="{{data.vehicle.vehicleModel}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Year</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="year" class="form-control"
+                                                                    placeholder="Enter Year"
+                                                                    value="{{data.vehicle.year}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Licence Plate</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="licencePlate"
+                                                                    class="form-control"
+                                                                    placeholder="Enter Licence Plate"
+                                                                    value="{{data.vehicle.licencePlate}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Color</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="color" class="form-control"
+                                                                    placeholder="Enter color"
+                                                                    value="{{data.vehicle.color}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">License
+                                                                Number</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="licenseNumber"
+                                                                    class="form-control"
+                                                                    placeholder="Enter License Number"
+                                                                    value="{{data.document.licenseNumber}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">License
+                                                                Number</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" name="liceneseIssueState"
+                                                                    class="form-control"
+                                                                    placeholder="Enter License issue state"
+                                                                    value="{{data.document.licenseIssueState}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Profile Image</label>
+                                                            <div class="col-sm-10">
+                                                                <label for="profile-image-upload" class="file-upload">
+                                                                    <input type="file" name="image"
+                                                                        id="profile-image-upload"
+                                                                        class="form-control visually-hidden"
+                                                                        accept="image/*">
+                                                                    <div class="file-upload-box">
+                                                                        <img id="profile-preview-image"
+                                                                            src="{{data.image}}" alt="Preview"
+                                                                            class="preview-image">
+                                                                        <span class="camera-icon">&#128247;</span>
+                                                                        <p>Click to upload</p>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Upload
+                                                                License</label>
+                                                            <div class="col-sm-10">
+                                                                <label for="license-image-upload" class="file-upload">
+                                                                    <input type="file" name="licenseImage"
+                                                                        id="license-image-upload"
+                                                                        class="form-control visually-hidden"
+                                                                        accept="image/*">
+                                                                    <div class="file-upload-box">
+                                                                        <img id="license-preview-image"
+                                                                            src="{{data.document.licenseImage}}"
+                                                                            alt="Preview" class="preview-image">
+                                                                        <span class="camera-icon">&#128247;</span>
+                                                                        <p>Click to upload</p>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Upload Insurance
+                                                                Copy</label>
+                                                            <div class="col-sm-10">
+                                                                <label for="insurance-image-upload" class="file-upload">
+                                                                    <input type="file" name="InsuranceImage"
+                                                                        id="insurance-image-upload"
+                                                                        class="form-control visually-hidden"
+                                                                        accept="image/*">
+                                                                    <div class="file-upload-box">
+                                                                        <img id="insurance-preview-image"
+                                                                            src="{{data.document.InsuranceImage}}"
+                                                                            alt="Preview" class="preview-image">
+                                                                        <span class="camera-icon">&#128247;</span>
+                                                                        <p>Click to upload</p>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2"></label>
+                                                            <div class="col-sm-10">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary m-b-0">Submit</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+    <script type="text/javascript">
+        // Function to set image previews dynamically
+        function setDynamicImagePreview(imageUrl, previewId) {
+            const previewImage = document.getElementById(previewId);
+
+            if (imageUrl) {
+                previewImage.src = imageUrl;
+                previewImage.style.display = 'block';
+            }
+        }
+
+        // Sample data object with image URLs (you should pass these dynamically)
+        const imageData = {
+            image: '{{data.image}}',
+            licenseImage: '{{data.document.licenseImage}}',
+            insuranceImage: '{{data.document.InsuranceImage}}'
+        };
+
+        // Set initial image previews
+        setDynamicImagePreview(imageData.image, 'profile-preview-image');
+        setDynamicImagePreview(imageData.licenseImage, 'license-preview-image');
+        setDynamicImagePreview(imageData.insuranceImage, 'insurance-preview-image');
+
+        // Function to open file manager upon clicking the preview image
+        function openFileManager(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        // Add event listeners to trigger file selection upon clicking the box
+        document.getElementById('profile-preview-image').addEventListener('click', function () {
+            openFileManager('profile-image-upload');
+        });
+
+        document.getElementById('license-preview-image').addEventListener('click', function () {
+            openFileManager('license-image-upload');
+        });
+
+        document.getElementById('insurance-preview-image').addEventListener('click', function () {
+            openFileManager('insurance-image-upload');
+        });
+
+        // Function to handle file selection and update preview
+        function handleFileSelect(event, previewId) {
+            const file = event.target.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            setDynamicImagePreview(imageUrl, previewId);
+        }
+
+        // Add event listeners to file inputs to handle image selection
+        document.getElementById('profile-image-upload').addEventListener('change', function (e) {
+            handleFileSelect(e, 'profile-preview-image');
+        });
+
+        document.getElementById('license-image-upload').addEventListener('change', function (e) {
+            handleFileSelect(e, 'license-preview-image');
+        });
+
+        document.getElementById('insurance-image-upload').addEventListener('change', function (e) {
+            handleFileSelect(e, 'insurance-preview-image');
+        });
+
+    </script>
+
+</body>

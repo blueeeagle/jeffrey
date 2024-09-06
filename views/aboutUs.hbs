@@ -1,0 +1,85 @@
+<body>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <h3>About Us</h3>
+                                    <div class="page-body">
+
+
+                                        <br class="row">
+                                        <form action="/about_us" method="post">
+
+                                            <textarea name="text" id="editor">{{record.text}}</textarea>
+                                            <br>
+                                            <input class="form-control" type="hidden" name="id"
+                                                value="{{record._id}}" />
+                                            <div class="col-md-2">
+                                                <button type="submit" style="background-color: #FD3E6C"
+                                                    class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Update</button>
+                                            </div>
+
+                                        </form>
+
+                                        </br>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+    <script src="https://cdn.ckeditor.com/4.19.0/full-all/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+</body>

@@ -1,0 +1,629 @@
+<body>
+    <style>
+        .dot {
+            height: 34px;
+            width: 45px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+
+        }
+          .date-picker-popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add some basic styling to the button */
+    .beautiful-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #3498db;
+        /* Set your desired background color */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        /* Add a smooth transition effect */
+    }
+
+    /* Change the button color on hover */
+    .beautiful-button:hover {
+        background-color: #2980b9;
+        /* Change to a slightly darker shade on hover */
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .three-dots {
+        cursor: pointer;
+    }
+    </style>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+            <div id="sidebar" class="users p-chat-user showChat">
+                <div class="had-container">
+                    <div class="card card_main p-fixed users-main">
+                        <div class="user-box">
+                            <div class="chat-inner-header">
+                                <div class="back_chatBox">
+                                    <div class="right-icon-control">
+                                        <input type="text" class="form-control  search-text" placeholder="Search Friend"
+                                            id="search-friends">
+                                        <div class="form-icon">
+                                            <i class="icofont icofont-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-friend-list">
+                                <div class="media userlist-box" data-id="1" data-status="online"
+                                    data-username="Josephin Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Josephin Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                            src="../files/assets/images/avatar-3.jpg" alt="Generic placeholder image ">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Josephin Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="2" data-status="online"
+                                    data-username="Lary Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Lary Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Lary Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice"
+                                    data-toggle="tooltip" data-placement="left" title="Alice">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-4.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alice</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia"
+                                    data-toggle="tooltip" data-placement="left" title="Alia">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alia</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen"
+                                    data-toggle="tooltip" data-placement="left" title="Suzen">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius" src="../files/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Suzen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showChat_inner">
+                <div class="media chat-inner-header">
+                    <a class="back_chatBox">
+                        <i class="feather icon-chevron-left"></i> Josephin Doe
+                    </a>
+                </div>
+                <div class="media chat-messages">
+                    <a class="media-left photo-table" href="#!">
+                        <img class="media-object img-radius img-radius m-t-5" src="../files/assets/images/avatar-3.jpg"
+                            alt="Generic placeholder image">
+                    </a>
+                    <div class="media-body chat-menu-content">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="media chat-messages">
+                    <div class="media-body chat-menu-reply">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media-right photo-table">
+                        <a href="#!">
+                            <img class="media-object img-radius img-radius m-t-5"
+                                src="../files/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                        </a>
+                    </div>
+                </div>
+                <div class="chat-reply-box p-b-20">
+                    <div class="right-icon-control">
+                        <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                        <div class="form-icon">
+                            <i class="feather icon-navigation"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>User detail</h4>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    {{!-- <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="../index.html"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">E-Commerce</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">Product Detail</a>
+                                                        </li>
+                                                    </ul> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <div class="card product-detail-page">
+                                                    <div class="card-block">
+                                                        <tbody>
+                                                            {{!-- {{#result}} --}}
+                                                            <div class="row" style="flex-direction: column;">
+                                                                <div style="
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+">
+                                                                    <div class="port_details_all_img row">
+                                                                        <div class="col-lg-12 m-b-15">
+                                                                            <div id="big_banner">
+                                                                                <div class="port_big_img">
+
+                                                                                    <img class="img img-fluid"
+                                                                                        src="{{userProfile.userImage}}"
+                                                                                        width="175px"
+                                                                                        onerror="this.src='{{process.env.BASE_URL}}/assets/images/userImage.png'"
+                                                                                        alt="Big_ Details">
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-lg-12 text-center">
+                                                                            {{!-- <h4>{{fullname}}</h4> --}}
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div style="display: grid;place-items: flex-end;">
+                                                                           <a href="/clientEdit/{{userProfile._id}}">
+        <button type="button" class="block mr-0"
+            style="border: none; background: transparent; outline: none; font-size: 18px; cursor: pointer;">
+            Edit
+        </button>
+    </a>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12   product-detail"
+                                                                    id="product-detail">
+                                                                    
+                                                                    <div >
+                                                                        <div>
+
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>First Name
+
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.firstName}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>Last Name
+
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.lastName}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>Email
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.email}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                            Mobile Number
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.mobileNumber}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                           Default Address
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.address.streetAddress}}, {{userProfile.address.city}}, {{userProfile.address.state}}, {{userProfile.address.zipCode}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                            Total Orders
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.totalOrders}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                            Total Cancelled orders
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.totalCancelledOrders}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                            Total delivered
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.totalDelivered}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <tr>
+                                                                                    <td class="col-lg-2"> <b>
+                                                                                            Total upcoming
+                                                                                            : </b></td>
+                                                                                    <td class="col-lg-10">
+                                                                                        {{userProfile.totalUpcoming}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <br>
+                                                                                <br>
+                                                                            </div>
+                                                                            <br>
+                                          <td class="col-lg-2"> <b>All Addresses: </b></td>
+<br>
+                                                                              <div class="card-block">
+                                                        <div class="dt-responsive table-responsive">
+                                                            <table id="basic-btn"
+                                                                class="table table-striped table-bordered nowrap text-center" style="
+    width: 100%;
+    overflow-x: auto;
+">
+                                                                <thead>
+                                                                    <tr>
+                                                <th>Location Name</th>
+                                                <th>Street Address</th>
+                                                  <th>City</th>
+                                                  <th>State</th>
+                                                  <th>Zip Code</th>
+                                                  <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                {{#each userProfile.otheraddresses}}
+                                                <tr>
+                                                  <td>{{this.locationName}}</td>
+                                                  <td>{{this.streetAddress}}</td>
+                                                  <td>{{this.city}}</td>
+                                                  <td>{{this.state}}</td>
+                                                  <td>{{this.zipCode}}</td>
+                                                 <td style="padding-top: 10px;">
+                                                                            <div class="dropdown">
+                                                                                <div class="three-dots"
+                                                                                    onclick="toggleDropdown(this)">
+                                                                                    {{!-- &vellip; --}}
+                                                                                    <i class="fa fa-ellipsis-h"></i>
+                                                                                </div>
+                                                                                <div class="dropdown-content"
+                                                                                    data-rowid="{{this._id}}"
+                                                                                    style="right: 2%;">
+                                                                                      <a
+                                                                                        href="/editAddress/{{this._id}}">Edit</a>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-default waves-effect"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#deleteRecordModal{{this._id}}">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- Your modal code -->
+                                                                    <div class="modal fade"
+                                                                        id="deleteRecordModal{{this._id}}" tabindex="-1"
+                                                                        role="dialog">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Delete
+                                                                                        Record
+                                                                                    </h4>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <h5>Confirmation</h5>
+                                                                                    <p>Are you sure you want to delete
+                                                                                        this record?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-default waves-effect "
+                                                                                        data-dismiss="modal">Cancel</button>
+                                                                                    <form action="/addressDelete"
+                                                                                        method="POST">
+                                                                                        <input type="hidden" name="id"
+                                                                                            value="{{this._id}}" />
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-primary waves-effect waves-light ">Delete</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal fade"
+                                                                        id="approvedModal{{this._id}}" tabindex="-1"
+                                                                        role="dialog">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Approved
+                                                                                        Profile
+                                                                                    </h4>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <form action="/approveUserClient"
+                                                                                        method="POST">
+                                                                                        <div class="form-group row">
+                                                                                            <label class="col-sm-12"
+                                                                                                style="text-align: center;">You
+                                                                                                can select</label>
+                                                                                            <div class="col-sm-12">
+                                                                                                <div class="form-radio"
+                                                                                                    style="width: 100%;display: flex;align-items: center;justify-content: center;">
+
+                                                                                                    <div
+                                                                                                        class="radio radiofill radio-primary radio-inline">
+                                                                                                        <label>
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="isAdminApprove"
+                                                                                                                value="true"
+                                                                                                                data-bv-field="member">
+                                                                                                            <i
+                                                                                                                class="helper"></i>Approved
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="radio radiofill radio-primary radio-inline">
+                                                                                                        <label>
+                                                                                                            <input
+                                                                                                                type="radio"
+                                                                                                                name="isAdminApprove"
+                                                                                                                value="false"
+                                                                                                                data-bv-field="member">
+                                                                                                            <i
+                                                                                                                class="helper"></i>Not
+                                                                                                            Approved
+                                                                                                        </label>
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                                <span
+                                                                                                    class="messages"></span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-default waves-effect "
+                                                                                        data-dismiss="modal">Cancle</button>
+                                                                                    <input type="hidden" name="id"
+                                                                                        value="{{this._id}}" />
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-primary waves-effect waves-light ">Submit</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                </tr>
+                                                {{/each}}
+                                              </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </tbody>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+     <script>
+        function toggleDropdown(threeDots) {
+            var dropdownContent = threeDots.nextElementSibling;
+            dropdownContent.parentElement.classList.toggle('active');
+        }
+    </script>
+</body>

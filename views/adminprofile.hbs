@@ -1,0 +1,495 @@
+<html>
+
+<head>
+    <title>Admin Profile</title>
+
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- {{#if message}}
+    <div class="alert alert-success border-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="icofont icofont-close-line-circled"></i>
+        </button>
+        <strong>{{message}}</strong>
+    </div>
+    {{/if}}
+
+    {{#if success}}
+    <div class="alert alert-success border-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="icofont icofont-close-line-circled"></i>
+        </button>
+        <strong>{{success}}</strong>
+    </div>
+    {{/if}} --}}
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header" style="
+    margin-bottom: 0px;
+">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Admin Profile</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    {{!-- {{#selectSidebar adminLogin.role}} --}}
+                                    <div class="page-body">
+
+                                        <div class="row">
+                                            <div class="col-lg-12" style="
+    background: #000;
+    width: 100vw;
+    height: 12rem;
+    margin: 2rem 0rem;
+">
+                                                <div class="cover-profile">
+                                                    <div class="profile-bg-img">
+                                                        {{!-- <img class="profile-bg-img img-fluid"
+                                                            src="/assets//icon/splash_logo." alt="bg-img"> --}}
+                                                        <div class="card-block user-info " style="  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%">
+                                                            <div class="col-md-12">
+                                                                <div class="media-left">
+
+                                                                    <a href="#" class="profile-image">
+                                                                        <img class="user-img img-radius"
+                                                                            src="{{adminLogin.image}}" alt="user-img"
+                                                                            width="130px" height="130px">
+                                                                    </a>
+
+
+                                                                </div>
+                                                                <div class="media-body row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="user-title">
+                                                                            <h2>{{adminLogin.firstName}}
+                                                                                {{adminLogin.lastName}}</h2>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+
+                                                <div class="tab-header card">
+                                                    <ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
+                                                        id="mytab">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                style="color: white; background-color :#FD3E6C; padding: 10px  !important;"
+                                                                href="#personal" role="tab">Personal Info</a>
+                                                            <div class="slide" style="background-color: white;">
+                                                            </div>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#binfo"
+                                                                style="color: white;  background-color :#FD3E6C; padding: 10px  !important;"
+                                                                role="tab">
+                                                                Password</a>
+                                                            <div class="slide" style="background-color: white;">
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="tab-content">
+
+                                                    <div class="tab-pane active" id="personal" role="tabpanel">
+
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h5 class="card-header-text">About Me</h5>
+
+                                                                <button id="edit-btn" type="button"
+                                                                    class="block mr-0  f-right"
+                                                                    style="background-color: #FD3E6C"
+                                                                    class="btn btn-sm btn-primary waves-effect waves-light f-right"><i
+                                                                        class="icofont icofont-edit"></i>
+                                                                </button>
+
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <div class="view-info">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="general-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-xl-12">
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table m-0">
+                                                                                                <tbody>
+                                                                                                    {{!-- {{#each
+                                                                                                    result}} --}}
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Full
+                                                                                                            Name :
+                                                                                                        </th>
+                                                                                                        <td>{{adminLogin.firstName}}
+                                                                                                            {{adminLogin.lastName}}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Email :
+                                                                                                        </th>
+                                                                                                        <td>{{adminLogin.email}}
+                                                                                                        </td>
+                                                                                                    </tr>
+
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="edit-info">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="general-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        {{!-- {{#each adminData}}
+                                                                                        --}}
+                                                                                        <form action="/editAdmin"
+                                                                                            method="post" class="j-pro"
+                                                                                            id="j-pro"
+                                                                                            enctype="multipart/form-data">
+                                                                                            <div class="j-content">
+                                                                                                {{!-- {{#each
+                                                                                                result}} --}}
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+
+                                                                                                            <input
+                                                                                                                class="form-control"
+                                                                                                                type="hidden"
+                                                                                                                id="name"
+                                                                                                                name="id"
+                                                                                                                placeholder="Enter Name"
+                                                                                                                value="{{adminLogin._id}}" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+                                                                                                            <input
+                                                                                                                type="text"
+                                                                                                                id="name"
+                                                                                                                name="firstName"
+                                                                                                                placeholder="Enter first Name"
+                                                                                                                value="{{adminLogin.firstName}}">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+                                                                                                            <input
+                                                                                                                type="text"
+                                                                                                                id="name"
+                                                                                                                name="lastName"
+                                                                                                                placeholder="Enter last Name"
+                                                                                                                value="{{adminLogin.lastName}}">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+                                                                                                            {{!--
+                                                                                                            <label
+                                                                                                                class="j-icon-right"
+                                                                                                                for="Email"
+                                                                                                                <i
+                                                                                                                class="icofont icofont-ui-office"></i>
+                                                                                                            </label>
+                                                                                                            --}}
+                                                                                                            <input
+                                                                                                                type="email"
+                                                                                                                id="email"
+                                                                                                                name="email"
+                                                                                                                placeholder="Please enter Email"
+                                                                                                                value="{{adminLogin.email}}">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input j-append-small-btn">
+                                                                                                            <div
+                                                                                                                class="card-block">
+                                                                                                                <input
+                                                                                                                    type="file"
+                                                                                                                    name="image"
+                                                                                                                    id="input-file-now"
+                                                                                                                    class="dropify">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-response">
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div class="j-footer">
+                                                                                                <button type="submit"
+                                                                                                    class="btn btn-primary"
+                                                                                                    style="background-color: #FD3E6C">Submit</button>
+                                                                                                <button type="reset"
+                                                                                                    class="btn btn-default m-r-20">Reset</button>
+                                                                                            </div>
+                                                                                            {{!-- {{/each}} --}}
+
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    {{!-- {{#each reset}} --}}
+
+                                                    <div class="tab-pane" id="binfo" role="tabpanel">
+
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h5 class="card-header-text">Change Password</h5>
+                                                            </div>
+
+                                                            <div class="card-block">
+                                                                <div class="view-info">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="general-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-xl-12">
+                                                                                        <form action="/adminChangePass"
+                                                                                            method="post" class="j-pro"
+                                                                                            id="j-pro">
+
+                                                                                            <div class="j-content">
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+
+                                                                                                            <input
+                                                                                                                class="form-control"
+                                                                                                                type="hidden"
+                                                                                                                id="first_name"
+                                                                                                                name="id"
+                                                                                                                placeholder="Enter Name"
+                                                                                                                value="{{adminLogin._id}}" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+                                                                                                            <label
+                                                                                                                class="j-icon-right"
+                                                                                                                for="first_name">
+                                                                                                                <i
+                                                                                                                    class="fa fa-key"></i>
+                                                                                                            </label>
+                                                                                                            <input
+                                                                                                                type="password"
+                                                                                                                id="first_name"
+                                                                                                                name="old_pass"
+                                                                                                                placeholder="Please Enter old Password">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="j-row">
+                                                                                                    <div
+                                                                                                        class="j-span12 j-unit">
+                                                                                                        <div
+                                                                                                            class="j-input">
+                                                                                                            <label
+                                                                                                                class="j-icon-right"
+                                                                                                                for="first_name">
+                                                                                                                <i
+                                                                                                                    class="fa fa-key"></i>
+                                                                                                            </label>
+                                                                                                            <input
+                                                                                                                type="password"
+                                                                                                                id="first_name"
+                                                                                                                name="new_pass"
+                                                                                                                placeholder="Please Enter New Password">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="j-footer">
+                                                                                                <button type="submit"
+                                                                                                    class="btn btn-primary"
+                                                                                                    style="background-color: #FD3E6C">Submit</button>
+                                                                                                <button type="reset"
+                                                                                                    class="btn btn-default m-r-20">Reset</button>
+                                                                                            </div>
+
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                {{!-- {{/each}} --}}
+
+                                                                <div class="edit-info">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="general-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    {{!-- {{/each}} --}}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{!-- {{else}} --}}
+
+                                    {{!-- <h1>this is test</h1> --}}
+
+                                    {{!-- {{/selectSidebar}} --}}
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+</body>

@@ -1,0 +1,823 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .dasoard {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .text_div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+
+    .suhbmmary {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .Total_text {
+        width: 100%;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .week-orders {
+        padding: 1rem;
+        background-color: #3444BC;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .total-orders {
+        padding: 1rem;
+        background-color: #36AE22;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .number {
+
+        font-size: 3em;
+        color: white;
+        font-weight: bold;
+    }
+
+    .label {}
+
+    .actions button {
+        padding: 10px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    .actions button:hover {
+        background-color: #0056b3;
+    }
+
+    .recent-orders h2 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .recent-orders ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .recent-orders li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .recent-orders .cancel {
+        background-color: #ff4136;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .recent-orders .cancel:hover {
+        background-color: #ff4136;
+    }
+
+    .icon {
+        font-size: 1.5em;
+    }
+</style>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .dasoard {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .text_div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+
+    .suhbmmary {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .Total_text {
+        width: 100%;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .week-orders {
+        padding: 1rem;
+        background-color: #3444BC;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .total-orders {
+        padding: 1rem;
+        background-color: #36AE22;
+        width: 50%;
+        text-align: center;
+
+    }
+
+    .number {
+
+        font-size: 3em;
+        color: white;
+        font-weight: bold;
+    }
+
+    .label {}
+
+    .actions button {
+        padding: 10px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    .actions button:hover {
+        background-color: #0056b3;
+    }
+
+    .recent-orders h2 {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .recent-orders ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .recent-orders li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .Breakfast {
+        background-color: #36AE22;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .lunch {
+        background-color: #DA2727;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .pmsnck {
+        background-color: #3444BC;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .recent-orders .cancel {
+        background-color: #ff4136;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .recent-orders .cancel:hover {
+        background-color: #ff4136;
+    }
+
+    .icon {
+        font-size: 1.5em;
+    }
+</style>
+
+<style>
+    .main_box_order {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0rem;
+    }
+
+    .sub_main_order_div {
+        width: 95%;
+        height: 100%;
+
+    }
+
+    .main_heading_text h2 {
+        color: #000;
+        font-family: Be Vietnam Pro;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    .ineer_order_details {
+        width: 100%;
+        height: 100%;
+
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+        border-bottom: 1px solid black;
+        position: relative;
+    }
+
+    .date_mainbox {
+        width: 10%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .date_mainbox span {
+        color: #000;
+        text-align: center;
+        font-family: Be Vietnam Pro;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .date_mainbox h1 {
+        text-align: center;
+        color: #000;
+        leading-trim: both;
+        text-edge: cap;
+        font-family: Be Vietnam Pro;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 41px;
+        /* 91.111% */
+        letter-spacing: 1.8px;
+
+    }
+
+    .order_details_text {
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .lunch_div {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 2rem;
+
+    }
+
+    .list_heading_div {
+        width: 100px;
+    }
+
+    .lunch_div h3 {
+        color: #000;
+        font-family: Be Vietnam Pro;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .btn_view {
+        position: absolute;
+        right: 30px;
+        bottom: 31px;
+
+    }
+
+    .btn_view_details {
+        border: none;
+        outline: none;
+        padding: 5px 15px;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        background: #FD3E6C;
+        color: #FFF;
+        font-family: Be Vietnam Pro;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        z-index: 9999;
+    }
+</style>
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+
+            {{>header}}
+
+            <div id="sidebar" class="users p-chat-user showChat">
+                <div class="had-container">
+                    <div class="card card_main p-fixed users-main">
+                        <div class="user-box">
+                            <div class="chat-inner-header">
+                                <div class="back_chatBox">
+                                    <div class="right-icon-control">
+                                        <input type="text" class="form-control  search-text" placeholder="Search Friend"
+                                            id="search-friends">
+                                        <div class="form-icon">
+                                            <i class="icofont icofont-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-friend-list">
+                                <div class="media userlist-box" data-id="1" data-status="online"
+                                    data-username="Josephin Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Josephin Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image ">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Josephin Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="2" data-status="online"
+                                    data-username="Lary Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Lary Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Lary Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice"
+                                    data-toggle="tooltip" data-placement="left" title="Alice">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-4.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alice</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia"
+                                    data-toggle="tooltip" data-placement="left" title="Alia">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alia</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen"
+                                    data-toggle="tooltip" data-placement="left" title="Suzen">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Suzen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showChat_inner">
+                <div class="media chat-inner-header">
+                    <a class="back_chatBox">
+                        <i class="feather icon-chevron-left"></i> Josephin Doe
+                    </a>
+                </div>
+                <div class="media chat-messages">
+                    <a class="media-left photo-table" href="#!">
+                        <img class="media-object img-radius img-radius m-t-5"
+                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                    </a>
+                    <div class="media-body chat-menu-content">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="media chat-messages">
+                    <div class="media-body chat-menu-reply">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media-right photo-table">
+                        <a href="#!">
+                            <img class="media-object img-radius img-radius m-t-5"
+                                src="{{process.env.BASE_URL}}/assets/images/avatar-4.jpg"
+                                alt="Generic placeholder image">
+                        </a>
+                    </div>
+                </div>
+                <div class="chat-reply-box p-b-20">
+                    <div class="right-icon-control">
+                        <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                        <div class="form-icon">
+                            <i class="feather icon-navigation"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    {{!-- <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>My Orders</h4>
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="/"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="dashboard">Dashboard</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <div class="card">
+                                                    <div class="card-header table-card-header">
+                                                        <h5> My Orders</h5>
+
+                                                    </div>
+                                                    <div class="card-block">
+
+                                                        <body>
+                                                            <div class="dasoard">
+                                                                <div class="suhbmmary">
+                                                                    <div class="total-orders">
+                                                                        <div class="text_div">
+
+                                                                            <span class="icon"><svg width="52"
+                                                                                    height="52" viewBox="0 0 52 52"
+                                                                                    fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M12.5 0.6875C5.98791 0.6875 0.687468 6.74394 0.687468 14.1875C0.629444 16.6354 1.22411 19.0547 2.41037 21.1968C3.59664 23.3389 5.33174 25.1266 7.43747 26.3763V46.25C7.43747 47.5927 7.97084 48.8803 8.92024 49.8297C9.86964 50.7791 11.1573 51.3125 12.5 51.3125C13.8426 51.3125 15.1303 50.7791 16.0797 49.8297C17.0291 48.8803 17.5625 47.5927 17.5625 46.25V26.3763C19.6682 25.1266 21.4033 23.3389 22.5896 21.1968C23.7758 19.0547 24.3705 16.6354 24.3125 14.1875C24.3125 6.74394 19.012 0.6875 12.5 0.6875ZM15.2303 23.7539C14.9217 23.8815 14.6579 24.0977 14.4723 24.3753C14.2866 24.6529 14.1875 24.9793 14.1875 25.3132V46.25C14.1875 46.6976 14.0097 47.1268 13.6932 47.4432C13.3767 47.7597 12.9475 47.9375 12.5 47.9375C12.0524 47.9375 11.6232 47.7597 11.3067 47.4432C10.9903 47.1268 10.8125 46.6976 10.8125 46.25V25.3132C10.8124 24.9793 10.7133 24.6529 10.5277 24.3753C10.342 24.0977 10.0782 23.8815 9.76959 23.7539C7.99075 22.8875 6.50331 21.5209 5.48959 19.8217C4.47587 18.1225 3.9799 16.1644 4.06247 14.1875C4.06247 8.60356 7.84753 4.0625 12.5 4.0625C17.1524 4.0625 20.9375 8.60356 20.9375 14.1875C21.02 16.1644 20.5241 18.1225 19.5103 19.8217C18.4966 21.5209 17.0092 22.8875 15.2303 23.7539ZM49.625 0.6875C49.1774 0.6875 48.7482 0.86529 48.4317 1.18176C48.1153 1.49822 47.9375 1.92745 47.9375 2.375V19.25C47.9375 20.5927 47.4041 21.8803 46.4547 22.8297C45.5053 23.7791 44.2176 24.3125 42.875 24.3125C42.4274 24.3125 41.9982 24.4903 41.6817 24.8068C41.3653 25.1232 41.1875 25.5524 41.1875 26V46.25C41.1875 46.6976 41.0097 47.1268 40.6932 47.4432C40.3767 47.7597 39.9475 47.9375 39.5 47.9375C39.0524 47.9375 38.6232 47.7597 38.3067 47.4432C37.9903 47.1268 37.8125 46.6976 37.8125 46.25V26C37.8125 25.5524 37.6347 25.1232 37.3182 24.8068C37.0017 24.4903 36.5725 24.3125 36.125 24.3125C34.7823 24.3125 33.4946 23.7791 32.5452 22.8297C31.5958 21.8803 31.0625 20.5927 31.0625 19.25V2.375C31.0625 1.92745 30.8847 1.49822 30.5682 1.18176C30.2517 0.86529 29.8225 0.6875 29.375 0.6875C28.9274 0.6875 28.4982 0.86529 28.1817 1.18176C27.8653 1.49822 27.6875 1.92745 27.6875 2.375V19.25C27.6896 21.1944 28.3622 23.0786 29.5918 24.5849C30.8214 26.0912 32.5328 27.1274 34.4375 27.5187V46.25C34.4375 47.5927 34.9708 48.8803 35.9202 49.8297C36.8696 50.7791 38.1573 51.3125 39.5 51.3125C40.8426 51.3125 42.1303 50.7791 43.0797 49.8297C44.0291 48.8803 44.5625 47.5927 44.5625 46.25V27.5187C46.4671 27.1274 48.1785 26.0912 49.4081 24.5849C50.6377 23.0786 51.3103 21.1944 51.3125 19.25V2.375C51.3125 1.92745 51.1347 1.49822 50.8182 1.18176C50.5017 0.86529 50.0725 0.6875 49.625 0.6875Z"
+                                                                                        fill="white" />
+                                                                                    <path
+                                                                                        d="M36.125 20.9375C36.5726 20.9375 37.0018 20.7597 37.3182 20.4432C37.6347 20.1268 37.8125 19.6976 37.8125 19.25V2.375C37.8125 1.92745 37.6347 1.49822 37.3182 1.18176C37.0018 0.86529 36.5726 0.6875 36.125 0.6875C35.6774 0.6875 35.2482 0.86529 34.9318 1.18176C34.6153 1.49822 34.4375 1.92745 34.4375 2.375V19.25C34.4375 19.6976 34.6153 20.1268 34.9318 20.4432C35.2482 20.7597 35.6774 20.9375 36.125 20.9375ZM42.875 20.9375C43.3226 20.9375 43.7518 20.7597 44.0682 20.4432C44.3847 20.1268 44.5625 19.6976 44.5625 19.25V2.375C44.5625 1.92745 44.3847 1.49822 44.0682 1.18176C43.7518 0.86529 43.3226 0.6875 42.875 0.6875C42.4274 0.6875 41.9982 0.86529 41.6818 1.18176C41.3653 1.49822 41.1875 1.92745 41.1875 2.375V19.25C41.1875 19.6976 41.3653 20.1268 41.6818 20.4432C41.9982 20.7597 42.4274 20.9375 42.875 20.9375Z"
+                                                                                        fill="white" />
+                                                                                </svg>
+                                                                            </span>
+
+                                                                            <span class="number">{{totalOrders}}</span>
+                                                                        </div>
+                                                                        <span class="Total_text">Total Orders</span>
+
+
+                                                                    </div>
+                                                                    <div class="week-orders">
+                                                                        <div class="text_div">
+
+                                                                            <span class="icon"><svg width="58"
+                                                                                    height="58" viewBox="0 0 58 58"
+                                                                                    fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <g clip-path="url(#clip0_14_1890)">
+                                                                                        <path
+                                                                                            d="M54.375 43.5H48.8124L47.125 19.8088C47.0924 19.3508 46.8871 18.9221 46.5507 18.6096C46.2143 18.297 45.7717 18.1238 45.3125 18.125H19.9375C19.4783 18.1238 19.0357 18.297 18.6993 18.6096C18.3629 18.9221 18.1576 19.3508 18.125 19.8088L16.4376 43.5H15.0438C14.4188 43.5 13.8195 43.2518 13.3776 42.8099C12.9357 42.368 12.6875 41.7687 12.6875 41.1438V3.625C12.6875 3.1443 12.4965 2.68328 12.1566 2.34337C11.8167 2.00346 11.3557 1.8125 10.875 1.8125H3.625C3.1443 1.8125 2.68328 2.00346 2.34337 2.34337C2.00346 2.68328 1.8125 3.1443 1.8125 3.625C1.8125 4.10571 2.00346 4.56672 2.34337 4.90663C2.68328 5.24654 3.1443 5.4375 3.625 5.4375H9.0625V41.1438C9.06535 42.5075 9.53418 43.8294 10.3913 44.8902C11.2484 45.951 12.4422 46.6871 13.775 46.9764C13.0965 48.068 12.7203 49.3203 12.6851 50.6051C12.6499 51.8899 12.9569 53.161 13.5746 54.2881C14.1923 55.4152 15.0985 56.3578 16.2004 57.0195C17.3024 57.6811 18.5604 58.0378 19.8456 58.0532C21.1307 58.0686 22.3969 57.7421 23.5144 57.1071C24.6318 56.4721 25.5604 55.5514 26.2049 54.4394C26.8495 53.3274 27.1868 52.0641 27.1824 50.7788C27.1779 49.4935 26.8319 48.2325 26.1798 47.125H39.0703C38.4179 48.2222 38.07 49.4735 38.0625 50.75C38.0625 52.6728 38.8263 54.5169 40.186 55.8765C41.5456 57.2362 43.3897 58 45.3125 58C47.2353 58 49.0794 57.2362 50.439 55.8765C51.7987 54.5169 52.5625 52.6728 52.5625 50.75C52.555 49.4735 52.2071 48.2222 51.5547 47.125H54.375C54.8557 47.125 55.3167 46.934 55.6566 46.5941C55.9965 46.2542 56.1875 45.7932 56.1875 45.3125C56.1875 44.8318 55.9965 44.3708 55.6566 44.0309C55.3167 43.691 54.8557 43.5 54.375 43.5ZM21.6249 21.75H43.6251L45.1784 43.5H41.6875V36.25C41.6875 35.7693 41.4965 35.3083 41.1566 34.9684C40.8167 34.6285 40.3557 34.4375 39.875 34.4375C39.3943 34.4375 38.9333 34.6285 38.5934 34.9684C38.2535 35.3083 38.0625 35.7693 38.0625 36.25V43.5H34.4375V36.25C34.4375 35.7693 34.2465 35.3083 33.9066 34.9684C33.5667 34.6285 33.1057 34.4375 32.625 34.4375C32.1443 34.4375 31.6833 34.6285 31.3434 34.9684C31.0035 35.3083 30.8125 35.7693 30.8125 36.25V43.5H27.1875V36.25C27.1875 35.7693 26.9965 35.3083 26.6566 34.9684C26.3167 34.6285 25.8557 34.4375 25.375 34.4375C24.8943 34.4375 24.4333 34.6285 24.0934 34.9684C23.7535 35.3083 23.5625 35.7693 23.5625 36.25V43.5H20.0716L21.6249 21.75ZM19.9375 54.375C19.2205 54.375 18.5197 54.1624 17.9236 53.7641C17.3274 53.3658 16.8628 52.7996 16.5884 52.1372C16.3141 51.4748 16.2423 50.746 16.3822 50.0428C16.522 49.3396 16.8673 48.6937 17.3742 48.1867C17.8812 47.6798 18.5271 47.3345 19.2303 47.1947C19.9335 47.0548 20.6623 47.1266 21.3247 47.4009C21.9871 47.6753 22.5533 48.1399 22.9516 48.7361C23.3499 49.3322 23.5625 50.033 23.5625 50.75C23.5625 51.7114 23.1806 52.6334 22.5008 53.3133C21.8209 53.9931 20.8989 54.375 19.9375 54.375ZM45.3125 54.375C44.5955 54.375 43.8947 54.1624 43.2986 53.7641C42.7024 53.3658 42.2378 52.7996 41.9634 52.1372C41.6891 51.4748 41.6173 50.746 41.7572 50.0428C41.897 49.3396 42.2423 48.6937 42.7492 48.1867C43.2562 47.6798 43.9021 47.3345 44.6053 47.1947C45.3085 47.0548 46.0373 47.1266 46.6997 47.4009C47.3621 47.6753 47.9283 48.1399 48.3266 48.7361C48.7249 49.3322 48.9375 50.033 48.9375 50.75C48.9375 51.7114 48.5556 52.6334 47.8758 53.3133C47.1959 53.9931 46.2739 54.375 45.3125 54.375Z"
+                                                                                            fill="white" />
+                                                                                    </g>
+                                                                                    <defs>
+                                                                                        <clipPath id="clip0_14_1890">
+                                                                                            <rect width="58" height="58"
+                                                                                                fill="white" />
+                                                                                        </clipPath>
+                                                                                    </defs>
+                                                                                </svg>
+                                                                            </span>
+                                                                            <span
+                                                                                class="number">{{weeklyOrdersCount}}</span>
+                                                                        </div>
+                                                                        <span class="Total_text">This week Orders</span>
+
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+
+                                                            </div>
+
+                                                            <script>
+                                                                document.addEventListener('DOMContentLoaded', function () {
+                                                                    const orderMealButton = document.getElementById('orderMeal');
+                                                                    const viewMenuButton = document.getElementById('viewMenu');
+
+                                                                    orderMealButton.addEventListener('click', function () {
+                                                                        // Implement what should happen when 'Order Meal' is clicked
+                                                                        alert('Order Meal clicked!');
+                                                                    });
+
+                                                                    viewMenuButton.addEventListener('click', function () {
+                                                                        // Implement what should happen when 'View Menu' is clicked
+                                                                        alert('View Menu clicked!');
+                                                                    });
+
+                                                                    // Add functionality for cancel buttons
+                                                                    const cancelButtons = document.querySelectorAll('.cancel');
+                                                                    cancelButtons.forEach(function (button) {
+                                                                        button.addEventListener('click', function (event) {
+                                                                            // Implement cancel order logic
+                                                                            alert('Order cancelled');
+                                                                            // This could be where you remove the order from the list or mark it as cancelled
+                                                                            // You might need to use event.target to get the specific button that was clicked
+                                                                        });
+                                                                    });
+                                                                });
+
+                                                            </script>
+                                                        </body>
+
+                                                        {{!--
+                                                        <div class="recent-orders">
+                                                            <h2>My All Orders</h2>
+                                                            <ul>
+                                                                {{#each Arr}}
+                                                                <li>
+                                                                    <span class="date"> <b>{{this.date}}</b></span>
+                                                                    {{#each this.data}}
+                                                                    <div
+                                                                        style="
+                                                                                                                                    
+                                                                                                                                    display: grid;
+                                                                                                                                    place-items: center;
+                                                                                                                                    padding: 10px;
+                                                                                                                                    width: 130px;
+                                                                                                                                    border-radius: 6px;
+                                                                                                                                     {{#ifCond this.orderFor '===' 'Breakfast'}}
+                                                                        background: #36AE22; / Green color for Breakfast /
+                                                                    {{else}}
+                                                                        {{#ifCond this.orderFor '===' 'Lunch'}}
+                                                                            background: #3444BC; / Blue color for Lunch /
+                                                                        {{else}}
+                                                                            background: #FF4136; / Red color for Pm snack /
+                                                                        {{/ifCond}}
+                                                                    {{/ifCond}}
+                                                                                                                                ">
+                                                                        <h3
+                                                                            style="
+                                                                                                                                        font-size: 18px;
+                                                                                                                                        text-align: center;
+                                                                                                                                        font-weight: 600;
+                                                                                                                                        color: white;">
+                                                                            {{this.quantity}}</h3>
+                                                                        <span><a
+                                                                                href="
+                                                                                                                                /todayslunchlist?date={{this._id}}"><button
+                                                                                    class="" type="button" style="border: none;
+                                                                color: white; {{#ifCond this.orderFor '===' 'Breakfast'}}
+                                                                        background: #36AE22; / Green color for Breakfast /
+                                                                    {{else}}
+                                                                        {{#ifCond this.orderFor '===' 'Lunch'}}
+                                                                            background: #3444BC; / Blue color for Lunch /
+                                                                        {{else}}
+                                                                            background: #FF4136; / Red color for Pm snack /
+                                                                        {{/ifCond}}
+                                                                    {{/ifCond}}">
+                                                                                    {{orderFor this.orderFor}}
+                                                                                </button></a></span>
+                                                                    </div>
+                                                                    {{/each}}
+
+
+                                                                </li>
+                                                                {{/each}}
+                                                            </ul>
+                                                        </div> --}}
+                                                        <div class="main_box_order">
+                                                            <div class="sub_main_order_div">
+                                                                <div class="main_heading_text">
+                                                                    <h2>Your Orders</h2>
+                                                                </div>
+                                                                {{!-- loop land --}}
+                                                                {{#each Arr}}
+                                                                <div class="ineer_order_details">
+                                                                    <div class="date_mainbox">
+                                                                        <h1>{{this.date}}</h1>
+                                                                        <span>{{this.day}}</span>
+
+                                                                    </div>
+                                                                    <div class="order_details_text">
+                                                                        {{#each this.data}}
+                                                                        <div class="lunch_div">
+                                                                            <div class="list_heading_div">
+
+                                                                                <h3>{{this.orderFor}}</h3>
+                                                                                <span>Qty:-{{this.quantity}}</span>
+                                                                            </div>
+                                                                            <span
+                                                                                class="label  {{#if (if_eq this.orderStatus 'Cancelled')}}label-danger{{/if}}{{#if (if_eq this.orderStatus 'Upcoming')}}label-primary{{/if}}{{#if (if_eq this.orderStatus 'Delivered')}}label-success{{/if}} text-uppercase">{{this.orderStatus}}</span>
+                                                                            {{!-- </span> --}}
+                                                                        </div>
+                                                                        {{!-- <div class="lunch_div">
+                                                                            <h3>Lunch</h3>
+                                                                            <span>20</span>
+
+                                                                        </div>
+                                                                        <div class="lunch_div">
+                                                                            <h3>PM Snack</h3>
+                                                                            <span>20</span>
+
+                                                                        </div> --}}
+                                                                        {{/each}}
+
+                                                                    </div>
+
+
+                                                                    <div class="btn_view">
+                                                                        <span><a
+                                                                                href="/orderviewlist?userId={{this.userId}}&date={{this.matchDate}}">
+                                                                                <button class="btn_view_details"
+                                                                                    type="button">
+                                                                                    view
+                                                                                </button></a></span>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                {{/each}}
+
+                                                            </div>
+
+                                                        </div>
+
+
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+</body>

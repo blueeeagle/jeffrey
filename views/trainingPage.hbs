@@ -1,0 +1,353 @@
+<style>
+    .custom-file-upload {
+        display: block;
+        margin: 20px;
+    }
+
+    #videoPreview {
+        display: none;
+        width: 100%;/ Adjust as per requirement / max-width: 400px;/ Adjust as per requirement / margin-top: 20px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .video_main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video_pre_box {
+        width: 400px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        gap: 2rem;
+        border-radius: 10px;
+
+
+
+    }
+
+    .video_pre_box video {
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+    }
+
+    .video_title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .title_box {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 90%;
+    }
+
+    .title_box label {
+        font-size: 20px;
+        font-weight: 700;
+
+    }
+
+    .title_box textarea {
+        width: 100%;
+        height: 80px;
+        resize: none;
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 5px 10px;
+    }
+
+    .title_box input {
+        width: 100%;
+        border-radius: 10px;
+        outline: none;
+        padding: 5px 10px;
+
+    }
+</style>
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Training Videos</h4>
+                                                        {{!-- <span>lorem ipsum dolor sit amet, consectetur adipisicing
+                                                            elit</span> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="dashboard"> <i class="feather icon-home"></i>
+                                                                Home
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                {{#if error_msg}}
+                                                <div class="alert alert-danger background-danger">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <i class="icofont icofont-close-line-circled text-white"></i>
+                                                    </button>
+                                                    <strong>Error!</strong> {{error_msg}}
+                                                </div>
+                                                {{/if}}
+                                                {{#if success_msg}}
+                                                <div class="alert alert-success background-success">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                        aria-label="Close">
+                                                        <i class="icofont icofont-close-line-circled text-white"></i>
+                                                    </button>
+                                                    <strong>Success!</strong> {{success_msg}}
+                                                </div>
+                                                {{/if}}
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Upload Videos</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <form action="/trainingPage/addTrainingVideo" method="post"
+                                                            enctype="multipart/form-data" style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+">
+
+                                                            <div class="video_main">
+
+
+                                                                <div class="custom-file-upload">
+                                                                    <button type="button" id="uploadBtn" style="
+    width: 100px;
+    height: 50px;
+    border: 1px solid green;
+    border-radius: 10px;
+    background: transparent;
+    color: black;
+    font-size: 10px;
+">Upload
+                                                                        Video</button>
+                                                                    <input type="file" id="fileUpload" name="video"
+                                                                        accept="video/*" class="hidden">
+                                                                </div>
+                                                                <div class="video_pre_box">
+
+                                                                    <video id="videoPreview" controls></video>
+                                                                </div>
+                                                            </div>
+                                                            <div class="video_title">
+                                                                <div class="title_box">
+                                                                    <label>Title</label>
+                                                                    <input type="text" name="title" />
+                                                                </div>
+                                                                <div class="title_box">
+                                                                    <label>Description</label>
+                                                                    <textarea name="description"
+                                                                        placeholder="Description"></textarea>
+                                                                </div>
+
+                                                            </div>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Upload</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="card-header">
+                                                        <h5>Training Videos List</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="dt-responsive table-responsive">
+                                                            <table id="basic-btn"
+                                                                class="table table-striped table-bordered nowrap text-center">
+                                                                <thead>
+                                                                    <tr>
+                                                                        {{!-- <th>User Id</th> --}}
+                                                                        <th>Sr.No</th>
+                                                                        <th>Title</th>
+                                                                        <th>Video</th>
+                                                                        <th>Action</th>
+                                                                        {{!-- <th>Action</th> --}}
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {{#each data}}
+                                                                    <tr>
+                                                                        <td>{{inc @index}}</td>
+                                                                        <td>{{this.title}}</td>
+                                                                        {{!-- <td>{{this.name}}</td> --}}
+                                                                        <td><video width="240" height="180" controls>
+                                                                                <source src="{{this.video}}"
+                                                                                    type="video/mp4">
+                                                                                Your browser does not support the video
+                                                                                tag.
+                                                                            </video></td>
+                                                                        <td style="padding-top: 10px;">
+                                                                            <div class="dropdown">
+                                                                                <button type="button"
+                                                                                    class="btn btn-default waves-effect"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#deleteRecordModal{{this._id}}">Delete</button>
+                                                                                {{!-- <button data-bs-toggle="modal"
+                                                                                    data-bs-target="#deleteRecordModal{{this._id}}">Delete</button>
+                                                                                --}}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- Your modal code -->
+                                                                    <div class="modal fade"
+                                                                        id="deleteRecordModal{{this._id}}" tabindex="-1"
+                                                                        role="dialog">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title">Delete
+                                                                                        Record
+                                                                                    </h4>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <h5>Confirmation</h5>
+                                                                                    <p>Are you sure you want to delete
+                                                                                        this record?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-default waves-effect "
+                                                                                        data-dismiss="modal">Cancle</button>
+                                                                                    <form
+                                                                                        action="/trainingPage/deleteVideo"
+                                                                                        method="post">
+                                                                                        <input type="hidden" name="id"
+                                                                                            value="{{this._id}}" />
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-primary waves-effect waves-light ">Delete</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{/each}}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Table for displaying uploaded PDFs -->
+                                                <!-- Your existing table HTML -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{>footer}}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadBtn').addEventListener('click', function () {
+            document.getElementById('fileUpload').click();
+        });
+
+        document.getElementById('fileUpload').onchange = function (e) {
+            var file = e.target.files[0];
+            if (file) {
+                var url = URL.createObjectURL(file);
+                var videoPreview = document.getElementById('videoPreview');
+                videoPreview.src = url;
+                videoPreview.style.display = 'block';
+            }
+        };
+    </script>
+
+</body>

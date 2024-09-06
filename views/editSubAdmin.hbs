@@ -1,0 +1,291 @@
+<style>
+    /* Updated CSS */
+    .file-upload {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .file-upload-box {
+        width: 100%;
+        height: 100%;
+        border: 2px dashed #ccc;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .file-upload-box img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        object-fit: contain;
+        /* Ensure image fits without distortion */
+    }
+
+    .camera-icon {
+        font-size: 40px;
+    }
+
+    .visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+</style>
+
+<body>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+
+            {{>header}}
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+
+                                <div class="page-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+                                            <div class="card">
+                                                {{#if error_msg}}
+                                                    <div class="alert alert-danger background-danger">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <i
+                                                                class="icofont icofont-close-line-circled text-white"></i>
+                                                        </button>
+                                                        <strong>Error!</strong> {{error_msg}}
+                                                    </div>
+                                                    {{/if}}
+                                                    {{#if success_msg}}
+                                                    <div class="alert alert-success background-success">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <i
+                                                                class="icofont icofont-close-line-circled text-white"></i>
+                                                        </button>
+                                                        <strong>Success!</strong> {{success_msg}}
+                                                    </div>
+                                                    {{/if}}
+                                                <div class="card-header">
+                                                    <h5>Edit Sub Admin</h5>
+
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="j-wrapper j-wrapper-640">
+                                                        <form action="/edit_subAdmin" method="post" class="j-pro"
+                                                            id="j-pro" novalidate enctype="multipart/form-data">
+                                                            <div class="j-content">
+                                                                <input type="hidden" name="id" value="{{data._id}}" />
+                                                                <div>
+                                                                    <label class="j-label">First Name</label>
+                                                                    <div class="j-unit">
+                                                                        <div class="j-input">
+                                                                            {{!-- <label class="j-icon-right"
+                                                                                for="name">
+                                                                                <i class="icofont icofont-ui-user"></i>
+                                                                            </label> --}}
+                                                                            <input type="text" id="name"
+                                                                                name="firstName"
+                                                                                value="{{data.firstName}}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <label class="j-label">Last Name</label>
+                                                                    <div class="j-unit">
+                                                                        <div class="j-input">
+                                                                            {{!-- <label class="j-icon-right"
+                                                                                for="name">
+                                                                                <i class="icofont icofont-ui-user"></i>
+                                                                            </label> --}}
+                                                                            <input type="text" id="name" name="lastName"
+                                                                                value="{{data.lastName}}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div>
+                                                                    <div>
+                                                                        <label class="j-label">Email</label>
+                                                                    </div>
+                                                                    <div class="j-unit">
+                                                                        <div class="j-input">
+                                                                            {{!-- <label class="j-icon-right"
+                                                                                for="email">
+                                                                                <i class="icofont icofont-envelope"></i>
+                                                                            </label> --}}
+                                                                            <input type="email" id="email" name="email"
+                                                                                value="{{data.email}}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div>
+                                                                    <div>
+                                                                        <label class="j-label ">Mobile</label>
+                                                                    </div>
+                                                                    <div class="j-unit">
+                                                                        <div class="j-input">
+                                                                            {{!-- <label class="j-icon-right"
+                                                                                for="mobile">
+                                                                                <i class="icofont icofont-ui-check"></i>
+                                                                            </label> --}}
+                                                                            <input type="text" id="mobile" name="mobile"
+                                                                                value="{{data.mobile}}" required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Profile Image</label>
+                                                            <div class="col-sm-10">
+                                                                <label for="profile-image-upload" class="file-upload">
+                                                                    <input type="file" name="image"
+                                                                        id="profile-image-upload"
+                                                                        class="form-control visually-hidden"
+                                                                        accept="image/*">
+                                                                    <div class="file-upload-box">
+                                                                        <img id="profile-preview-image"
+                                                                            src="{{data.image}}" alt="Preview"
+                                                                            class="preview-image">
+                                                                        <span class="camera-icon">&#128247;</span>
+                                                                        <p>Click to upload</p>
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                            </div>
+                                                    </div>
+
+
+                                                    <div class="j-response"></div>
+
+
+                                                    <div class="j-footer" style="display: flex;justify-content:center;gap:2rem;">
+                                                        <button type="submit" style="background-color: black; "
+                                                            class="btn btn-primary">Submit</button>
+                                                            <a href="/adminuserlist" style="background-color: black; "
+                                                            class="btn btn-primary">cancel</a>
+                                                    </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+    <script type="text/javascript">
+        // Function to set image previews dynamically
+        function setDynamicImagePreview(imageUrl, previewId) {
+            const previewImage = document.getElementById(previewId);
+
+            if (imageUrl) {
+                previewImage.src = imageUrl;
+                previewImage.style.display = 'block';
+            }
+        }
+
+        // Sample data object with image URLs (you should pass these dynamically)
+        const imageData = {
+            image: '{{data.image}}',
+        };
+
+        // Set initial image previews
+        setDynamicImagePreview(imageData.image, 'profile-preview-image');
+
+        // Function to open file manager upon clicking the preview image
+        function openFileManager(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        // Add event listeners to trigger file selection upon clicking the box
+        document.getElementById('profile-preview-image').addEventListener('click', function () {
+            openFileManager('profile-image-upload');
+        });
+
+        // Function to handle file selection and update preview
+        function handleFileSelect(event, previewId) {
+            const file = event.target.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            setDynamicImagePreview(imageUrl, previewId);
+        }
+
+        // Add event listeners to file inputs to handle image selection
+        document.getElementById('profile-image-upload').addEventListener('change', function (e) {
+            handleFileSelect(e, 'profile-preview-image');
+        });
+
+    </script>
+</body>

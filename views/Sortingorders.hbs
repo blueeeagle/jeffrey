@@ -1,0 +1,408 @@
+<style>
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    #chart {
+        max-width: 650px;
+        margin: 35px auto;
+    }
+
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.29.0/dist/apexcharts.min.css">
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+
+            {{>header}}
+
+            <div id="sidebar" class="users p-chat-user showChat">
+                <div class="had-container">
+                    <div class="card card_main p-fixed users-main">
+                        <div class="user-box">
+                            <div class="chat-inner-header">
+                                <div class="back_chatBox">
+                                    <div class="right-icon-control">
+                                        <input type="text" class="form-control  search-text" placeholder="Search Friend"
+                                            id="search-friends">
+                                        <div class="form-icon">
+                                            <i class="icofont icofont-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-friend-list">
+                                <div class="media userlist-box" data-id="1" data-status="online"
+                                    data-username="Josephin Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Josephin Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image ">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Josephin Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="2" data-status="online"
+                                    data-username="Lary Doe" data-toggle="tooltip" data-placement="left"
+                                    title="Lary Doe">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Lary Doe</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice"
+                                    data-toggle="tooltip" data-placement="left" title="Alice">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-4.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alice</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia"
+                                    data-toggle="tooltip" data-placement="left" title="Alia">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Alia</div>
+                                    </div>
+                                </div>
+                                <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen"
+                                    data-toggle="tooltip" data-placement="left" title="Suzen">
+                                    <a class="media-left" href="#!">
+                                        <img class="media-object img-radius"
+                                            src="{{process.env.BASE_URL}}/assets/images/avatar-2.jpg"
+                                            alt="Generic placeholder image">
+                                        <div class="live-status bg-success"></div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="f-13 chat-header">Suzen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showChat_inner">
+                <div class="media chat-inner-header">
+                    <a class="back_chatBox">
+                        <i class="feather icon-chevron-left"></i> Josephin Doe
+                    </a>
+                </div>
+                <div class="media chat-messages">
+                    <a class="media-left photo-table" href="#!">
+                        <img class="media-object img-radius img-radius m-t-5"
+                            src="{{process.env.BASE_URL}}/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                    </a>
+                    <div class="media-body chat-menu-content">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="media chat-messages">
+                    <div class="media-body chat-menu-reply">
+                        <div class="">
+                            <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                            <p class="chat-time">8:20 a.m.</p>
+                        </div>
+                    </div>
+                    <div class="media-right photo-table">
+                        <a href="#!">
+                            <img class="media-object img-radius img-radius m-t-5"
+                                src="{{process.env.BASE_URL}}/assets/images/avatar-4.jpg"
+                                alt="Generic placeholder image">
+                        </a>
+                    </div>
+                </div>
+                <div class="chat-reply-box p-b-20">
+                    <div class="right-icon-control">
+                        <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                        <div class="form-icon">
+                            <i class="feather icon-navigation"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                {{!-- <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Today's Total Lunch Orders</h4>
+                                                        <span></span>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                            {{!-- <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="/"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="dashboard">Dashboard</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card">
+                                                    <form action="/reportList" id="intervalForm" method="get"
+                                                        style="margin-top: -5%;">
+                                                        <label for="dropdown">Select an option:</label>
+                                                        <select id="dropdown" name="value">
+                                                            <option value="All">All</option>
+                                                            <option value="Weekly">Current Week</option>
+                                                            <option value="nextWeek">Next Week</option>
+                                                            <option value="Monthly">Current Month</option>
+                                                            <option value="nextMonth">Next Month</option>
+                                                            <option value="3Month">3 Month</option>
+                                                            <option value="6Month">6 Month</option>
+                                                            <option value="9Month">9 Month</option>
+                                                            <option value="Yearly">Yearly</option>
+                                                        </select>
+                                                        
+                                                        <label for="userDropdown">Select a Client:</label>
+                    <select id="userDropdown" name="userId">
+                        <option value="">Select Client</option>
+                        {{#each users}}
+                        <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                        {{/each}}
+                    </select>
+
+                      <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" />
+
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" />
+
+                                                        <button type="submit">Submit</button>
+                                                    </form>
+                                                      {{#if error_msg}}
+                <div class="alert alert-danger background-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="icofont icofont-close-line-circled text-white"></i>
+                    </button>
+                    <strong>Error!</strong> {{error_msg}}
+                </div>
+                {{/if}}
+
+                {{#if success_msg}}
+                <div class="alert alert-success background-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="icofont icofont-close-line-circled text-white"></i>
+                    </button>
+                    <strong>Success!</strong> {{success_msg}}
+                </div>
+                {{/if}}
+                                                    <div class="card-block">
+                                                        <div class="dt-responsive table-responsive">
+                                                            <table id="basic-btn"
+                                                                class="table table-striped table-bordered nowrap text-center">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Order Code</th>
+                                                                        <th>Order Created</th>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Location</th>
+                                                                        <th>Assign to Driver</th>
+                                                                        <th>Order Status</th>
+                                                                        <th>Delivery Date</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {{#each data}}
+                                                                    <tr>
+                                                                        <td>{{this.orderCode}}</td>
+                                                                        <td>{{formatDate this.created_at "MM-DD-YYYY"}}
+                                                                        </td>
+                                                                        <td>{{this.userId.firstName}}
+                                                                            {{this.userId.lastName}}</td>
+                                                                        <td>{{this.addressId.locationName}}</td>
+                                                                        <td>{{this.isOrderAssign}}</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="label  {{#if (if_eq this.orderStatus 'Cancelled')}}label-danger{{/if}}{{#if (if_eq this.orderStatus 'Upcoming')}}label-primary{{/if}}{{#if (if_eq this.orderStatus 'Delivered')}}label-success{{/if}} text-uppercase">{{this.orderStatus}}</span>
+                                                                        </td>
+                                                                        <td>{{formatDateNormal this.orderDate "MM-DD-YYYY"}}</td>
+                                                                        <td style="padding-top :10px;">
+                                                                            <a
+                                                                                href="/orderviewlist?orderId={{this._id}}">
+                                                                                <button type="button" class="block mr-0"
+                                                                                    style="background-color: #01a9ac">
+                                                                                    <i
+                                                                                        class="icofont icofont-eye-alt"></i>
+                                                                                </button>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    {{/each}}
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+    {{!--
+    document.getElementById('intervalForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const selectedValue = document.getElementById('dropdown').value;
+    console.log("Selected value:", selectedValue);
+
+    if (selectedValue === 'Yearly') {
+
+    // Set the flag to true after rendering the yearly chart
+    } else if(selectedValue === 'Monthly') {
+
+
+
+    }
+    });
+    </script> --}}
+
+
+    <script>
+        function updateForm() {
+            // Get the value from the input field
+            var updatedValue = document.getElementById('updateField').value;
+
+            // Make an AJAX request to update the form on the server
+            // You need to implement the server-side logic for updating the form
+            // This could involve using fetch, jQuery.ajax, or any other AJAX method
+
+            // After the form is updated, close the modal
+            $('#updateModal').modal('hide');
+        }
+    </script>
+
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        let queryString = urlParams.get('value');
+        document.getElementById("dropdown").querySelector("option[value='" + queryString + "']").selected = true;
+    </script>
+
+</body>

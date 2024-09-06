@@ -1,0 +1,825 @@
+<head>
+    <title>Adminty - Premium Admin Template by Colorlib </title>
+
+
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    {{!--
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/j-forms.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Calendar with Dynamic Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <style>
+        /* rescalendar */
+        .rescalendar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .rescalendar_controls {
+            /* margin-left: 65px;*/
+            padding: 0;
+        }
+
+        .rescalendar_controls input {
+            text-align: center;
+        }
+
+        .rescalendar_table {
+            padding-top: 10px;
+            margin: 0 auto;
+        }
+
+        .rescalendar_table .firstColumn {
+            width: 100px;
+            text-align: left;
+        }
+
+        .rescalendar_day_cells td {
+            width: 30px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .rescalendar_day_cells td.disabledDay {
+            color: #000;
+            background: #fff;
+        }
+
+        .rescalendar_day_cells span {
+            display: block;
+            padding: 0 2px 0px;
+            font-size: 14px;
+            width: 30px;
+        }
+
+        .rescalendar_day_cells span.day {
+            display: block;
+            width: 30px;
+        }
+
+        .rescalendar_day_cells td.today {
+            background: #fd3e6c;
+            color: #fff;
+        }
+
+        .dataRow {
+            padding-bottom: 1rem !important;
+        }
+
+        /*.rescalendar_day_cells td.middleDay {
+                border: 1px solid blue;
+            }*/
+
+        .rescalendar_day_cells td:hover {
+            background: #eee;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .refDate {
+            border: 1px solid #fd3e6c;
+            border-radius: 5px;
+        }
+
+        .move_to_last_month,
+        .move_to_yesterday {
+            border: none;
+            outline: none;
+            background: #fd3e6c;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            font-weight: 900;
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        .move_to_tomorrow,
+        .move_to_next_month {
+            border: none;
+            outline: none;
+            background: #fd3e6c;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            font-weight: 900;
+            padding: 8px;
+            margin-left: 10px;
+        }
+
+        .move_to_today {
+            padding: 8px;
+            border: none;
+            outline: none;
+            background: #fd3e6c;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+            font-weight: 900;
+        }
+
+
+        .rescalendar td a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .rescalendar td .hasEvent {
+            background: yellow;
+        }
+
+        .error_wrapper {
+            width: 100;
+            text-align: center;
+            background: red;
+            color: #fff;
+            padding: 15px;
+        }
+
+        .data_cell {
+            border-radius: 6px;
+        }
+
+        .new_date_box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+
+
+    <style>
+        body {
+            text-align: center;
+
+            background-color: #fafafa;
+
+        }
+
+        h1 {
+            margin: 150px 0 100px 30px;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        .greenClass {
+            background: green;
+        }
+
+        .blueClass {
+            background: blue;
+        }
+
+        .redClass {
+            background: red
+        }
+    </style>
+
+    <style>
+        .menu-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .menu-tab {
+            flex-grow: 1;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-tab.active {
+            background-color: #fd3e6c;
+            color: #fff;
+        }
+
+        .menu-content {
+            display: none;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="button"] {
+            background-color: #fd3e6c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+
+        button[type="submit"] {
+            background-color: #fd3e6c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="button"]:hover {
+            background-color: #e0345d;
+        }
+
+        .new_add_fildes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem 0rem;
+        }
+
+        #datepicker {
+            width: 30% !important;
+        }
+
+        .input_main_div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            #datepicker {
+                width: 100% !important;
+            }
+
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+
+
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+
+                                    <div class="page-body">
+
+                                        <div class="card">
+
+                                            {{#if error_msg}}
+                                            <div class="alert alert-danger background-danger">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                                </button>
+                                                <strong>Error!</strong> {{error_msg}}
+                                            </div>
+                                            {{/if}}
+                                            {{#if success_msg}}
+                                            <div class="alert alert-success background-success">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                                </button>
+                                                <strong>Success!</strong> {{success_msg}}
+                                            </div>
+                                            {{/if}}
+
+                                            <div class="card-header">
+                                                <h5>Edit Menu Items</h5>
+                                            </div>
+
+                                            <div class="card-block">
+                                                <div class="wrapper wrapper-640">
+                                                    <div class="j-tabs-container">
+
+                                                        {{!-- here calender code --}}
+
+                                                        <div class="wrapper">
+                                                            <h4> Edit Menu Items</h4>
+                                                            <div class="rescalendar" id="my_calendar_en"></div>
+                                                        </div>
+                                                        <div class="menu-content active" id="breakfast-content">
+                                                            {{!-- <h2>Breakfast Menu</h2> --}}
+                                                            <form id="" action="/editsItem" method="post">
+                                                                <input type="hidden" name="itemId"
+                                                                    value="{{result._id}}">
+                                                                <div class="form-group" id="dynamic-fields">
+                                                                    <input type="hidden" name="categoryName"
+                                                                        value="{{categoryName}}">
+                                                                    <!-- Initial input fields for item and description -->
+                                                                    {{#each data}}
+                                                                    <input type="hidden" name="itemid"
+                                                                        value="{{this.id}}">
+                                                                    <div class="item-description-fields">
+                                                                        <label for="item"
+                                                                            style="text-align: start; padding-top: 10px;">Item:</label>
+                                                                        <input type="text" name="item"
+                                                                            placeholder="Item" value="{{this.name}}"
+                                                                            required
+                                                                            style="width: 77%;place-items: self-start;display: grid;" />
+
+                                                                    </div>
+                                                                    {{/each}}
+                                                                </div>
+
+                                                                <div class="form-group row"
+                                                                    style="display: flex;flex-direction: column;align-items: flex-start;justify-content: center;">
+                                                                    <label class="col-sm-2 col-form-label0"
+                                                                        style="padding-right: 3%;">Change
+                                                                        Category</label>
+                                                                    <div class="col-sm-10" style="width: 32%;">
+                                                                        <select name="categoryId" class="form-control">
+                                                                            <option value="{{categoryId}}" disabled
+                                                                                selected>{{categoryName}}</option>
+                                                                            {{#each category}}
+                                                                            <option value="{{this._id}}">{{this.name}}
+                                                                            </option>
+                                                                            {{/each}}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <button type="submit" id="">Update Menu Items</button>
+                                                                {{!-- <button type="button" id="add-breakfast">Add
+                                                                    Breakfast Item</button> --}}
+
+                                                            </form>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{!--
+                                        </div> --}}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="styleSelector">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll(".menu-tab");
+        const contents = document.querySelectorAll(".menu-content");
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach((t) => t.classList.remove("active"));
+                contents.forEach((c) => c.classList.remove("active"));
+
+                // Add active class to the clicked tab and corresponding content
+                const tabId = tab.getAttribute("data-tab");
+                const contentId = `${tabId}-content`;
+                tab.classList.add("active");
+                document.getElementById(contentId).classList.add("active");
+            });
+        });
+
+        // Add and remove input fields
+        document.querySelectorAll(".add-item").forEach((button) => {
+            button.addEventListener("click", () => {
+                const listItem = document.createElement("li");
+                listItem.classList.add("new_add_fildes");
+                listItem.innerHTML = `<input type="text" name="${button.getAttribute(
+                    "data-type"
+                )}-item"><button type="button" class="add-item" data-type="${button.getAttribute(
+                    "data-type"
+                )}">+</button><button type="button" class="remove-item" data-type="${button.getAttribute(
+                    "data-type"
+                )}">-</button>`;
+                button.parentNode.parentNode.insertBefore(listItem, button.parentNode);
+            });
+        });
+
+        document.querySelectorAll(".item-list").forEach((list) => {
+            list.addEventListener("click", (e) => {
+                if (e.target.classList.contains("remove-item")) {
+                    e.target.parentNode.remove();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Initialize flatpickr date picker
+        const datePicker = flatpickr("#datepicker", {
+            dateFormat: "Y-m-d",
+            time_24hr: true, // Use 24-hour format
+            enableTime: false, // Disable time selection
+            utc: true, // Use UTC timezone
+            onChange: function (selectedDates, dateStr, instance) {
+                // Get the selected date
+                const selectedDate = selectedDates[0];
+
+                // Set the selected date as the value of the hidden input field
+                const hiddenDateInput = document.getElementById("hidden-date");
+                hiddenDateInput.value = dateStr;
+
+                // Example: Generate dynamic information based on the selected date
+                const dynamicInfo = document.getElementById("dynamic-info");
+                dynamicInfo.textContent = `${dateStr}`;
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+
+    <script>
+        document.getElementById("add-fields").addEventListener("click", function () {
+            const dynamicFields = document.getElementById("dynamic-fields");
+
+            // Create a parent div to hold the newFieldsContainer and its child elements
+            const parentDiv = document.createElement("div");
+
+            // Create item label
+            const newItemLabel = document.createElement("label");
+            newItemLabel.textContent = "Item:";
+            newItemLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create item input field
+            const newItemInput = document.createElement("input");
+            newItemInput.setAttribute("type", "text");
+            newItemInput.setAttribute("name", "item[]");
+            newItemInput.setAttribute("placeholder", "Item");
+            newItemInput.setAttribute("required", "true");
+            newItemInput.setAttribute("style", "width: 77%; place-items: self-start; display: grid;");
+
+            // Create description label
+            const newDescriptionLabel = document.createElement("label");
+            newDescriptionLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create description input field
+            const newDescriptionInput = document.createElement("input");
+            newDescriptionInput.setAttribute("type", "text");
+            newDescriptionInput.setAttribute("required", "true");
+            newDescriptionInput.setAttribute("style", "width: 77%; margin-left: -12%;");
+
+            // Create a div to hold the new item and description inputs along with the minimize button
+            const newFieldsContainer = document.createElement("div");
+            newFieldsContainer.classList.add("input_main_div");
+            parentDiv.appendChild(newItemLabel);
+            newFieldsContainer.appendChild(newItemInput);
+
+            // Create a minimize button for the new fields
+            const minimizeButton = document.createElement("button");
+            minimizeButton.setAttribute("type", "button");
+            minimizeButton.setAttribute("style", "margin-left: 1%;");
+            minimizeButton.classList.add("minimize-fields");
+            minimizeButton.textContent = "Minimize";
+            minimizeButton.addEventListener("click", function () {
+                parentDiv.style.display = "none"; // Hide the fields when the minimize button is clicked
+            });
+
+            // Append the minimize button to the newFieldsContainer
+            newFieldsContainer.appendChild(minimizeButton);
+
+            // Append the newFieldsContainer to the parent div
+            parentDiv.appendChild(newFieldsContainer);
+
+            // Append the parent div to the form
+            dynamicFields.appendChild(parentDiv);
+        });
+
+
+        document.getElementById("add-pmsnack-fields").addEventListener("click", function () {
+            const dynamicFields = document.getElementById("dynamic-fields-pmsnack");
+
+            // Create a parent div to hold the newFieldsContainer and its child elements
+            const parentDiv = document.createElement("div");
+
+            // Create item label
+            const newItemLabel = document.createElement("label");
+            newItemLabel.textContent = "Item:";
+            newItemLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create item input field
+            const newItemInput = document.createElement("input");
+            newItemInput.setAttribute("type", "text");
+            newItemInput.setAttribute("name", "item[]");
+            newItemInput.setAttribute("placeholder", "Item");
+            newItemInput.setAttribute("required", "true");
+            newItemInput.setAttribute("style", "width: 77%; place-items: self-start; display: grid;");
+
+            // Create description label
+            const newDescriptionLabel = document.createElement("label");
+            newDescriptionLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create description input field
+            const newDescriptionInput = document.createElement("input");
+            newDescriptionInput.setAttribute("type", "text");
+            newDescriptionInput.setAttribute("required", "true");
+            newDescriptionInput.setAttribute("style", "width: 77%; margin-left: -12%;");
+
+            // Create a div to hold the new item and description inputs along with the minimize button
+            const newFieldsContainer = document.createElement("div");
+            newFieldsContainer.classList.add("input_main_div");
+            parentDiv.appendChild(newItemLabel);
+            newFieldsContainer.appendChild(newItemInput);
+
+            // Create a minimize button for the new fields
+            const minimizeButton = document.createElement("button");
+            minimizeButton.setAttribute("type", "button");
+            minimizeButton.setAttribute("style", "margin-left: 1%;");
+            minimizeButton.classList.add("minimize-fields");
+            minimizeButton.textContent = "Minimize";
+            minimizeButton.addEventListener("click", function () {
+                parentDiv.style.display = "none"; // Hide the fields when the minimize button is clicked
+            });
+
+            // Append the minimize button to the newFieldsContainer
+            newFieldsContainer.appendChild(minimizeButton);
+
+            // Append the newFieldsContainer to the parent div
+            parentDiv.appendChild(newFieldsContainer);
+
+            // Append the parent div to the form
+            dynamicFields.appendChild(parentDiv);
+        });
+
+
+
+        document.getElementById("add-lunch-fields").addEventListener("click", function () {
+            const dynamicFields = document.getElementById("dynamic-fields-lunch");
+
+            // Create a parent div to hold the newFieldsContainer and its child elements
+            const parentDiv = document.createElement("div");
+
+            // Create item label
+            const newItemLabel = document.createElement("label");
+            newItemLabel.textContent = "Item:";
+            newItemLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create item input field
+            const newItemInput = document.createElement("input");
+            newItemInput.setAttribute("type", "text");
+            newItemInput.setAttribute("name", "item[]");
+            newItemInput.setAttribute("placeholder", "Item");
+            newItemInput.setAttribute("required", "true");
+            newItemInput.setAttribute("style", "width: 77%; place-items: self-start; display: grid;");
+
+            // Create description label
+            const newDescriptionLabel = document.createElement("label");
+            newDescriptionLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create description input field
+            const newDescriptionInput = document.createElement("input");
+            newDescriptionInput.setAttribute("type", "text");
+            newDescriptionInput.setAttribute("required", "true");
+            newDescriptionInput.setAttribute("style", "width: 77%; margin-left: -12%;");
+
+            // Create a div to hold the new item and description inputs along with the minimize button
+            const newFieldsContainer = document.createElement("div");
+            newFieldsContainer.classList.add("input_main_div");
+            parentDiv.appendChild(newItemLabel);
+            newFieldsContainer.appendChild(newItemInput);
+
+            // Create a minimize button for the new fields
+            const minimizeButton = document.createElement("button");
+            minimizeButton.setAttribute("type", "button");
+            minimizeButton.setAttribute("style", "margin-left: 1%;");
+            minimizeButton.classList.add("minimize-fields");
+            minimizeButton.textContent = "Minimize";
+            minimizeButton.addEventListener("click", function () {
+                parentDiv.style.display = "none"; // Hide the fields when the minimize button is clicked
+            });
+
+            // Append the minimize button to the newFieldsContainer
+            newFieldsContainer.appendChild(minimizeButton);
+
+            // Append the newFieldsContainer to the parent div
+            parentDiv.appendChild(newFieldsContainer);
+
+            // Append the parent div to the form
+            dynamicFields.appendChild(parentDiv);
+        });
+
+        document.getElementById("add-vegetarian-fields").addEventListener("click", function () {
+            const dynamicFields = document.getElementById("dynamic-fields-vegetarian");
+
+            const parentDiv = document.createElement("div");
+
+            // Create item label
+            const newItemLabel = document.createElement("label");
+            newItemLabel.textContent = "Item:";
+            newItemLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create item input field
+            const newItemInput = document.createElement("input");
+            newItemInput.setAttribute("type", "text");
+            newItemInput.setAttribute("name", "item[]");
+            newItemInput.setAttribute("placeholder", "Item");
+            newItemInput.setAttribute("required", "true");
+            newItemInput.setAttribute("style", "width: 77%; place-items: self-start; display: grid;");
+
+            // Create description label
+            const newDescriptionLabel = document.createElement("label");
+            newDescriptionLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create description input field
+            const newDescriptionInput = document.createElement("input");
+            newDescriptionInput.setAttribute("type", "text");
+            newDescriptionInput.setAttribute("required", "true");
+            newDescriptionInput.setAttribute("style", "width: 77%; margin-left: -12%;");
+
+            // Create a div to hold the new item and description inputs along with the minimize button
+            const newFieldsContainer = document.createElement("div");
+            newFieldsContainer.classList.add("input_main_div");
+            parentDiv.appendChild(newItemLabel);
+            newFieldsContainer.appendChild(newItemInput);
+
+            // Create a minimize button for the new fields
+            const minimizeButton = document.createElement("button");
+            minimizeButton.setAttribute("type", "button");
+            minimizeButton.setAttribute("style", "margin-left: 1%;");
+            minimizeButton.classList.add("minimize-fields");
+            minimizeButton.textContent = "Minimize";
+            minimizeButton.addEventListener("click", function () {
+                parentDiv.style.display = "none"; // Hide the fields when the minimize button is clicked
+            });
+
+            // Append the minimize button to the newFieldsContainer
+            newFieldsContainer.appendChild(minimizeButton);
+
+            // Append the newFieldsContainer to the parent div
+            parentDiv.appendChild(newFieldsContainer);
+
+            // Append the parent div to the form
+            dynamicFields.appendChild(parentDiv);
+        });
+
+        document.getElementById("add-supper-fields").addEventListener("click", function () {
+            const dynamicFields = document.getElementById("dynamic-fields-supper");
+
+            const parentDiv = document.createElement("div");
+
+            // Create item label
+            const newItemLabel = document.createElement("label");
+            newItemLabel.textContent = "Item:";
+            newItemLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create item input field
+            const newItemInput = document.createElement("input");
+            newItemInput.setAttribute("type", "text");
+            newItemInput.setAttribute("name", "item[]");
+            newItemInput.setAttribute("placeholder", "Item");
+            newItemInput.setAttribute("required", "true");
+            newItemInput.setAttribute("style", "width: 77%; place-items: self-start; display: grid;");
+
+            // Create description label
+            const newDescriptionLabel = document.createElement("label");
+            newDescriptionLabel.setAttribute("style", "text-align: start; padding-top: 10px;");
+
+            // Create description input field
+            const newDescriptionInput = document.createElement("input");
+            newDescriptionInput.setAttribute("type", "text");
+            newDescriptionInput.setAttribute("required", "true");
+            newDescriptionInput.setAttribute("style", "width: 77%; margin-left: -12%;");
+
+            // Create a div to hold the new item and description inputs along with the minimize button
+            const newFieldsContainer = document.createElement("div");
+            newFieldsContainer.classList.add("input_main_div");
+            parentDiv.appendChild(newItemLabel);
+            newFieldsContainer.appendChild(newItemInput);
+
+            // Create a minimize button for the new fields
+            const minimizeButton = document.createElement("button");
+            minimizeButton.setAttribute("type", "button");
+            minimizeButton.setAttribute("style", "margin-left: 1%;");
+            minimizeButton.classList.add("minimize-fields");
+            minimizeButton.textContent = "Minimize";
+            minimizeButton.addEventListener("click", function () {
+                parentDiv.style.display = "none"; // Hide the fields when the minimize button is clicked
+            });
+
+            // Append the minimize button to the newFieldsContainer
+            newFieldsContainer.appendChild(minimizeButton);
+
+            // Append the newFieldsContainer to the parent div
+            parentDiv.appendChild(newFieldsContainer);
+
+            // Append the parent div to the form
+            dynamicFields.appendChild(parentDiv);
+        });
+    </script>
+
+
+
+</body>

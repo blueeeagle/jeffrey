@@ -1,0 +1,429 @@
+<body>
+    <style>
+        .dot {
+            height: 34px;
+            width: 45px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+
+        }
+    </style>
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    {{>sidebar}}
+
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Client Information</h4>
+                                                        <span>you can here <code>edit</code> information of
+                                                            client</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="#"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="/dashboard">Dashboard</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="/userList">Clients List</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            {{#if error_msg}}
+                                            <div class="alert alert-danger background-danger">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                                </button>
+                                                <strong>Error!</strong> {{error_msg}}
+                                            </div>
+                                            {{/if}}
+                                            {{#if success_msg}}
+                                            <div class="alert alert-success background-success">
+                                                <button type="button" class="close" data-dismiss="alert"
+                                                    aria-label="Close">
+                                                    <i class="icofont icofont-close-line-circled text-white"></i>
+                                                </button>
+                                                <strong>Success!</strong> {{success_msg}}
+                                            </div>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Edit Client Information</h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="sub-title">Basic Inputs</h4>
+                                                        <form action="/updateClientInfo" method="post"
+                                                            enctype="multipart/form-data">
+                                                            <input type="hidden" name="id" value="{{data._id}}">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">First
+                                                                    Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="firstName"
+                                                                        class="form-control form-control-round"
+                                                                        placeholder="Enter your name"
+                                                                        value="{{data.firstName}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Last Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="lastName"
+                                                                        class="form-control form-control-round"
+                                                                        placeholder="Enter your name"
+                                                                        value="{{data.lastName}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Email</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="email"
+                                                                        class="form-control form-control-round"
+                                                                        placeholder="Enter your email"
+                                                                        value="{{data.email}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Mobile
+                                                                    Number</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" name="mobileNumber"
+                                                                        class="form-control form-control-round"
+                                                                        placeholder="Enter your email number"
+                                                                        value="{{data.mobileNumber}}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Change
+                                                                    Profile</label>
+                                                                <div class="col-lg-10">
+                                                                    <input type="file" name="userImage"
+                                                                        class="form-control"
+                                                                        placeholder="Enter your email number"
+                                                                        style="border: none;">
+                                                                </div>
+                                                            </div>
+                                                            <div style="width:100%;display:grid;place-items:end;">
+                                                                <div class=" mobile-inputs">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary btn-round"
+                                                                        style="width:max-content;border-radius: 10px !important;font-size: 12px !important;">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="styleSelector">
+                                <div class="selector-toggle"><a href="javascript:void(0)"></a></div>
+                                <ul>
+                                    <li>
+                                        <p class="selector-title main-title st-main-title"><b>Adminty </b>Customizer</p>
+                                        <span class="text-muted">Live customizer with tons of options</span>
+                                    </li>
+                                    <li>
+                                        <p class="selector-title">Main layouts</p>
+                                    </li>
+                                    <li>
+                                        <div class="theme-color"><a href="#" class="navbar-theme"
+                                                navbar-theme="themelight1"><span class="head"></span><span
+                                                    class="cont"></span></a><a href="#" class="navbar-theme"
+                                                navbar-theme="theme1"><span class="head"></span><span
+                                                    class="cont"></span></a></div>
+                                    </li>
+                                </ul>
+                                <div class="slimScrollDiv"
+                                    style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 440px);">
+                                    <div class="style-cont m-t-10"
+                                        style="overflow: hidden; width: auto; height: calc(100vh - 440px);">
+                                        <ul class="nav nav-tabs  tabs" role="tablist">
+                                            <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                                    href="#sel-layout" role="tab">Layouts</a></li>
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                    href="#sel-sidebar-setting" role="tab">Sidebar Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content tabs">
+                                            <div class="tab-pane active" id="sel-layout" role="tabpanel">
+                                                <ul>
+                                                    <li class="theme-option">
+                                                        <div class="checkbox-fade fade-in-primary"><label><input
+                                                                    type="checkbox" value="false" id="sidebar-position"
+                                                                    name="sidebar-position" checked=""><span
+                                                                    class="cr"><i
+                                                                        class="cr-icon feather icon-check txt-success f-w-600"></i></span><span>Fixed
+                                                                    Sidebar Position</span></label></div>
+                                                    </li>
+                                                    <li class="theme-option">
+                                                        <div class="checkbox-fade fade-in-primary"><label><input
+                                                                    type="checkbox" value="false" id="header-position"
+                                                                    name="header-position" checked=""><span
+                                                                    class="cr"><i
+                                                                        class="cr-icon feather icon-check txt-success f-w-600"></i></span><span>Fixed
+                                                                    Header Position</span></label></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-pane" id="sel-sidebar-setting" role="tabpanel">
+                                                <ul>
+                                                    <li class="theme-option">
+                                                        <p class="sub-title drp-title">Menu Type</p>
+                                                        <div class="form-radio" id="menu-effect">
+                                                            <div class="radio radio-inverse radio-inline"
+                                                                data-toggle="tooltip" title=""
+                                                                data-original-title="simple icon"><label><input
+                                                                        type="radio" name="radio" value="st6"
+                                                                        onclick="handlemenutype(this.value)"
+                                                                        checked="true"><i class="helper"></i><span
+                                                                        class="micon st6"><i
+                                                                            class="feather icon-command"></i></span></label>
+                                                            </div>
+                                                            <div class="radio  radio-primary radio-inline"
+                                                                data-toggle="tooltip" title=""
+                                                                data-original-title="color icon"><label><input
+                                                                        type="radio" name="radio" value="st5"
+                                                                        onclick="handlemenutype(this.value)"><i
+                                                                        class="helper"></i><span class="micon st5"><i
+                                                                            class="feather icon-command"></i></span></label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="theme-option">
+                                                        <p class="sub-title drp-title">SideBar Effect</p><select
+                                                            id="vertical-menu-effect" class="form-control minimal">
+                                                            <option name="vertical-menu-effect" value="shrink">shrink
+                                                            </option>
+                                                            <option name="vertical-menu-effect" value="overlay">overlay
+                                                            </option>
+                                                            <option name="vertical-menu-effect" value="push">Push
+                                                            </option>
+                                                        </select>
+                                                    </li>
+                                                    <li class="theme-option">
+                                                        <p class="sub-title drp-title">Hide/Show Border</p><select
+                                                            id="vertical-border-style" class="form-control minimal">
+                                                            <option name="vertical-border-style" value="solid">Style 1
+                                                            </option>
+                                                            <option name="vertical-border-style" value="dotted">Style 2
+                                                            </option>
+                                                            <option name="vertical-border-style" value="dashed">Style 3
+                                                            </option>
+                                                            <option name="vertical-border-style" value="none">No Border
+                                                            </option>
+                                                        </select>
+                                                    </li>
+                                                    <li class="theme-option">
+                                                        <p class="sub-title drp-title">Drop-Down Icon</p><select
+                                                            id="vertical-dropdown-icon" class="form-control minimal">
+                                                            <option name="vertical-dropdown-icon" value="style1">Style 1
+                                                            </option>
+                                                            <option name="vertical-dropdown-icon" value="style2">style 2
+                                                            </option>
+                                                            <option name="vertical-dropdown-icon" value="style3">style 3
+                                                            </option>
+                                                        </select>
+                                                    </li>
+                                                    <li class="theme-option">
+                                                        <p class="sub-title drp-title">Sub Menu Drop-down Icon</p>
+                                                        <select id="vertical-subitem-icon" class="form-control minimal">
+                                                            <option name="vertical-subitem-icon" value="style1">Style 1
+                                                            </option>
+                                                            <option name="vertical-subitem-icon" value="style2">style 2
+                                                            </option>
+                                                            <option name="vertical-subitem-icon" value="style3">style 3
+                                                            </option>
+                                                            <option name="vertical-subitem-icon" value="style4">style 4
+                                                            </option>
+                                                            <option name="vertical-subitem-icon" value="style5">style 5
+                                                            </option>
+                                                            <option name="vertical-subitem-icon" value="style6">style 6
+                                                            </option>
+                                                        </select>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <p class="selector-title">Header Brand color</p>
+                                                </li>
+                                                <li class="theme-option">
+                                                    <div class="theme-color"><a href="#" class="logo-theme"
+                                                            logo-theme="theme1"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="logo-theme"
+                                                            logo-theme="theme2"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="logo-theme"
+                                                            logo-theme="theme3"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="logo-theme"
+                                                            logo-theme="theme4"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="logo-theme"
+                                                            logo-theme="theme5"><span class="head"></span><span
+                                                                class="cont"></span></a></div>
+                                                </li>
+                                                <li>
+                                                    <p class="selector-title">Header color</p>
+                                                </li>
+                                                <li class="theme-option">
+                                                    <div class="theme-color"><a href="#" class="header-theme"
+                                                            header-theme="theme1"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="header-theme"
+                                                            header-theme="theme2"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="header-theme"
+                                                            header-theme="theme3"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="header-theme"
+                                                            header-theme="theme4"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="header-theme"
+                                                            header-theme="theme5"><span class="head"></span><span
+                                                                class="cont"></span></a><a href="#" class="header-theme"
+                                                            header-theme="theme6"><span class="head"></span><span
+                                                                class="cont"></span></a></div>
+                                                </li>
+                                                <li>
+                                                    <p class="selector-title">Active link color</p>
+                                                </li>
+                                                <li class="theme-option">
+                                                    <div class="theme-color"><a href="#" class="active-item-theme small"
+                                                            active-item-theme="theme1">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme2">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme3">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme4">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme5">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme6">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme7">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme8">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme9">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme10">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme11">&nbsp;</a><a href="#"
+                                                            class="active-item-theme small"
+                                                            active-item-theme="theme12">&nbsp;</a></div>
+                                                </li>
+                                                <li>
+                                                    <p class="selector-title">Menu Caption Color</p>
+                                                </li>
+                                                <li class="theme-option">
+                                                    <div class="theme-color"><a href="#" class="leftheader-theme small"
+                                                            lheader-theme="theme1">&nbsp;</a><a href="#"
+                                                            class="leftheader-theme small"
+                                                            lheader-theme="theme2">&nbsp;</a><a href="#"
+                                                            class="leftheader-theme small"
+                                                            lheader-theme="theme3">&nbsp;</a><a href="#"
+                                                            class="leftheader-theme small"
+                                                            lheader-theme="theme4">&nbsp;</a><a href="#"
+                                                            class="leftheader-theme small"
+                                                            lheader-theme="theme5">&nbsp;</a><a href="#"
+                                                            class="leftheader-theme small"
+                                                            lheader-theme="theme6">&nbsp;</a></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="slimScrollBar"
+                                        style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 75.3748px;">
+                                    </div>
+                                    <div class="slimScrollRail"
+                                        style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li><a href="http://html.codedthemes.com/Adminty/doc" target="_blank"
+                                            class="btn btn-primary btn-block m-r-15 m-t-5 m-b-10">Online
+                                            Documentation</a></li>
+                                    <li class="text-center"><span class="text-center f-18 m-t-15 m-b-15 d-block">Thank
+                                            you for sharing !</span><a href="#!" target="_blank"
+                                            class="btn btn-facebook soc-icon m-b-20"><i
+                                                class="feather icon-facebook"></i></a><a href="#!" target="_blank"
+                                            class="btn btn-twitter soc-icon m-l-20 m-b-20"><i
+                                                class="feather icon-twitter"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+</body>

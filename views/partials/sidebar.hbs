@@ -1,0 +1,135 @@
+<nav class="pcoded-navbar">
+    <div class="pcoded-inner-navbar main-menu">
+        {{!-- <div class="pcoded-navigatio-lavel">Navigation</div> --}}
+        {{!-- {{#if adminLogin.role === 'super_admin'}} --}}
+
+
+        {{!-- {{#if (req.session.adminLogin.role === "super_admin")}} --}}
+        <ul class="pcoded-item pcoded-left-item">
+            {{!-- <li class="pcoded-hasmenu  pcoded-trigger"> --}}
+            <li class="pcoded-hasmenu">
+                <a href="/dashboard">
+                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                    <span class="pcoded-mtext">Dashboard</span>
+                </a>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="/clientList">
+                    <span class="pcoded-micon"><i class="icofont icofont-people f-20"></i></span>
+                    <span class="pcoded-mtext">Client Managment</span>
+                    {{!-- <span class="pcoded-badge label label-warning">NEW</span> --}}
+                </a>
+
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="fa fa-users "></i></span>
+                    <span class="pcoded-mtext">User Management</span>
+                </a>
+                <ul class="pcoded-submenu">
+
+                    {{#if isAdmin}}
+                    <li class="">
+                        <a href="/adminuserlist">
+                            <span class="pcoded-mtext">Sub Admin</span>
+                        </a>
+
+                    </li>
+                    {{/if}}
+                    <li class="">
+                        <a href="/driversList">
+                            <span class="pcoded-mtext">Drivers List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="icofont icofont-fork-and-knife f-20"></i></span>
+                    <span class="pcoded-mtext">Item Management</span>
+                </a>
+                <ul class="pcoded-submenu">
+
+                    <li class="">
+                        <a href="/addmenu">
+                            <span class="pcoded-mtext">Add Menu items</span>
+                        </a>
+                    </li>
+                      <li class="">
+                        <a href="/addcsvmenu">
+                            <span class="pcoded-mtext">Add Client Menu</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/getList?value=1">
+                            <span class="pcoded-mtext">View items</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="/reportList">
+                    <span class="pcoded-micon"><i class="ti-shopping-cart f-20"></i></span>
+                    <span class="pcoded-mtext">Order Management</span>
+                    {{!-- <span class="pcoded-badge label label-warning">NEW</span> --}}
+                </a>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="/trainingPage">
+                    <span class="pcoded-micon"><i class="ti-video-clapper f-20"></i></span>
+                    <span class="pcoded-mtext">Training Page Videos</span>
+                    {{!-- <span class="pcoded-badge label label-warning">NEW</span> --}}
+                </a>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="/monthlymenu">
+                    <span class="pcoded-micon"><i class="fa fa-list f-20"></i></i></span>
+                    <span class="pcoded-mtext">Add Monthly Menu</span>
+                    {{!-- <span class="pcoded-badge label label-warning">NEW</span> --}}
+                </a>
+            </li>
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="icofont icofont-chart-bar-graph"></i></span>
+                    <span class="pcoded-mtext">Reporting</span>
+                </a>
+                <ul class="pcoded-submenu">
+
+                    <li class="">
+                        <a href="/reportsList">
+                            <span class="pcoded-mtext"> Metrics</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            {{!-- <li class="pcoded-hasmenu">
+                <a href="/categoryList">
+                    <span class="pcoded-micon"><i class="fa fa-database f-20"></i></span>
+                    <span class="pcoded-mtext">Category</span>
+                </a>
+            </li> --}}
+            <li class="pcoded-hasmenu">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="fa-solid fa-file-contract"></i></span>
+                    <span class="pcoded-mtext">CMS</span>
+                    {{!-- <span class="pcoded-badge label label-danger">100+</span> --}}
+                </a>
+                <ul class="pcoded-submenu">
+
+                    <li class="">
+                        <a href="/termsCondition">
+                            <span class="pcoded-mtext">Terms Condition</span>
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="/aboutUs">
+                            <span class="pcoded-mtext">About Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>

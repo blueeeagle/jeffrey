@@ -1,0 +1,587 @@
+<head>
+    <title>Adminty - Premium Admin Template by Colorlib </title>
+
+
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/pages/j-pro/css/j-forms.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+    <style>
+        /* Add your custom styles for events with data */
+        .data-available {
+            color: green;
+            /* Change color as needed */
+        }
+    </style>
+
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .menu-tab {
+            flex-grow: 1;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-tab.active {
+            background-color: #fd3e6c;
+            color: #fff;
+        }
+
+        .menu-content {
+            display: none;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="button"] {
+            background-color: #fd3e6c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="button"]:hover {
+            background-color: #e0345d;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            {{>header}}
+
+
+
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+
+                    {{>sidebar}}
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Add Breakfast</h4>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="page-body">
+
+                                        <div class="card" style="    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2rem 1rem;">
+
+                                            <div class="col-xl-5 col-md-4">
+                                                <div id="calendar"></div>
+
+                                            </div>
+
+
+
+                                            <div class="left_card_box" style="width: 100%;">
+                                                <div class="left_card_info"
+                                                    style="display: flex;align-items:flex-end;justify-content: flex-end ;flex-direction: column; padding-right: 2rem">
+
+
+                                                    <div class="cheked_yes_box"
+                                                        style="display: flex;align-items: center;justify-content: flex-start;gap: 4.5rem;">
+                                                        <div class="yes_box"
+                                                            style="width: 30px; height : 15px ; background-color : black">
+
+                                                        </div>
+                                                        <span>Add Menu</span>
+                                                    </div>
+                                                    <div class="uncheked_box"
+                                                        style="display: flex;align-items: center;justify-content: flex-start;gap: 1rem">
+                                                        <div class="no_box"
+                                                            style="width: 30px; height : 15px ; border : 1px solid black">
+
+                                                        </div>
+                                                        <span>Pending Add Menu</span>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="card-block" style="    width: 100%">
+                                                    <div class="wrapper wrapper-640">
+                                                        <div class="j-tabs-container">
+     <div class="menu-tabs">
+                                                                <div class="menu-tab active" data-tab="breakfast">
+                                                                    Breakfast</div>
+                                                                <div class="menu-tab" data-tab="lunch">Lunch</div>
+                                                                <div class="menu-tab" data-tab="pmsnack">PM Snack</div>
+                                                            </div>
+                                                            <form action="/addbreakdastdata" method="post"
+                                                                class="j-forms" novalidate>
+                                                                <div class="content">
+                                                                    <div class="form-group form-primary">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-append">
+                                                                                <span class="input-group-text"
+                                                                                    style="background-color:#ffffff;">
+                                                                                    <i class="fa fa-calendar"
+                                                                                        style="color: #FD3E6C;"></i>
+                                                                                </span>
+
+                                                                            </div>
+                                                                            <label for="date" name="date" id="date"
+                                                                                class="form-control"> <b>
+                                                                                    Date</b></label>
+                                                                            <input type="date" id="date" name="date">
+                                                                        </div>
+
+
+
+                                                                        <div class="unit toclone-wid get-right toclone"
+                                                                            style="margin-top: 10px">
+                                                                            <div class="input-group">
+                                                                                <input type="text" placeholder="Item"
+                                                                                    name="option" class="txtBox">
+                                                                            </div>
+                                                                            <button type="button"
+                                                                                style="color: #fff; background-color: #FD3E6C"
+                                                                                class="btn btn-primary clone-btn-right clone">
+                                                                                <i class="icofont icofont-plus"></i>
+                                                                            </button>
+                                                                            <button type="button"
+                                                                                style="color: #fff; background-color: #FD3E6C"
+                                                                                class="btn btn-default clone-btn-right delete">
+                                                                                <i class="icofont icofont-minus"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary m-b-20 f-right"
+                                                                        style="background-color: #FD3E6C;">
+                                                                        Submit
+                                                                    </button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="styleSelector">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Event delegation for cloning
+            $("body").on("click", ".clone-btn-right.clone", function () {
+                const cloneContainer = $(this).closest(".unit.toclone-wid");
+                const clone = cloneContainer.clone(true);
+                cloneContainer.after(clone); // Insert the cloned element after the original
+            });
+
+            // Event delegation for deletion
+            $("body").on("click", ".clone-btn-right.delete", function () {
+                const item = $(this).closest(".unit.toclone-wid");
+                if (item && item.siblings(".unit.toclone-wid").length > 0) {
+                    item.remove();
+                }
+            });
+        });
+
+
+    </script>
+
+    {{!-- <script>
+
+        "use strict";
+        const all_bookings = {{{ all_bookings }}}
+        $(document).ready(function () {
+            $('#external-events .fc-event').each(function () {
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when the user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true, // will cause the event to go back to its original position after the drag
+                    revertDuration: 0
+                });
+            });
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listMonth'
+                },
+                defaultDate: `${{ formattedDate }}`,
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: false,
+                droppable: false, // this allows things to be dropped onto the calendar
+                drop: function () {
+                    if ($('#checkbox2').is(':checked')) {
+                        $(this).remove();
+                    }
+                },
+
+                events: all_bookings,
+
+                eventRender: function (event, element) {
+                    // Check if the event's date exists in all_bookings
+                    const eventData = all_bookings.find((data) => data.date === event.start.format('YYYY-MM-DD'));
+                    console.log("eventData=>>", eventData)
+
+                    if (eventData) {
+                        // Event has data, show checked checkbox on this date
+                        element.find('.fc-content').prepend('<i class="fa fa-check checked-icon"></i>');
+                    }
+                }
+            });
+        });
+    </script> --}}
+
+
+    <!-- ... Your HTML code ... -->
+
+<script>
+    "use strict";
+    const all_bookings = {{{ all_bookings }}}
+    $(document).ready(function () {
+        $('#external-events .fc-event').each(function () {
+            // store data so the calendar knows to render an event upon drop
+            $(this).data('event', {
+                title: $.trim($(this).text()), // use the element's text as the event title
+                stick: true, // maintain when the user navigates (see docs on the renderEvent method)
+                id: $(this).data('event-id') // set the event ID from your data attribute
+            });
+
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 999,
+                revert: true, // will cause the event to go back to its original position after the drag
+                revertDuration: 0
+            });
+        });
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listMonth'
+            },
+            defaultDate: `${{ formattedDate }}`,
+            navLinks: true, // can click day/week names to navigate views
+            businessHours: true, // display business hours
+            editable: false,
+            droppable: false, // this allows things to be dropped onto the calendar
+            drop: function () {
+                if ($('#checkbox2').is(':checked')) {
+                    $(this).remove();
+                }
+            },
+
+            events: all_bookings,
+
+            eventRender: function (event, element) {
+                // Check if the event's date exists in all_bookings
+                const eventData = all_bookings.find((data) => data.date === event.start.format('YYYY-MM-DD'));
+                console.log("eventData=>>", eventData)
+
+                if (eventData) {
+                    // Event has data, show checked checkbox on this date
+                    element.find('.fc-content').prepend('<i class="fa fa-check checked-icon"></i>');
+                }
+            },
+            eventClick: function (event) {
+                // Access the event ID and update your form elements
+                var eventId = event.id;
+                console.log("eventId=>>" ,eventId)
+                // Update your form elements with the event ID
+                document.getElementById("eventid").value = eventId;
+            }
+        });
+    });
+</script>
+
+
+
+    <script>
+        const tabs = document.querySelectorAll(".menu-tab");
+        const contents = document.querySelectorAll(".menu-content");
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach((t) => t.classList.remove("active"));
+                contents.forEach((c) => c.classList.remove("active"));
+
+                // Add active class to the clicked tab and corresponding content
+                const tabId = tab.getAttribute("data-tab");
+                const contentId = `${tabId}-content`;
+                tab.classList.add("active");
+                document.getElementById(contentId).classList.add("active");
+            });
+        });
+
+        // Add and remove input fields
+        document.querySelectorAll(".add-item").forEach((button) => {
+            button.addEventListener("click", () => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<input type="text" name="${button.getAttribute(
+                    "data-type"
+                )}-item"><button type="button" class="add-item" data-type="${button.getAttribute(
+                    "data-type"
+                )}">+</button><button type="button" class="remove-item" data-type="${button.getAttribute(
+                    "data-type"
+                )}">-</button>`;
+                button.parentNode.parentNode.insertBefore(listItem, button.parentNode);
+            });
+        });
+
+        document.querySelectorAll(".item-list").forEach((list) => {
+            list.addEventListener("click", (e) => {
+                if (e.target.classList.contains("remove-item")) {
+                    e.target.parentNode.remove();
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+    {{!-- old code --}}
+    {{!--
+    <script>
+        "use strict";
+        const all_bookings = {{{ all_bookings }}}
+        $(document).ready(function () {
+            $('#external-events .fc-event').each(function () {
+
+                // store data so the calendar knows to render an event upon drop
+                $(this).data('event', {
+                    title: $.trim($(this).text()), // use the element's text as the event title
+                    stick: true // maintain when user navigates (see docs on the renderEvent method)
+                });
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 999,
+                    revert: true, // will cause the event to go back to its
+                    revertDuration: 0 //  original position after the drag
+                });
+
+            });
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listMonth'
+                },
+                defaultDate: `${{ formattedDate }}`,
+                navLinks: true, // can click day/week names to navigate views
+                businessHours: true, // display business hours
+                editable: false,
+                droppable: false, // this allows things to be dropped onto the calendar
+                drop: function () {
+
+                    if ($('#checkbox2').is(':checked')) {
+                        $(this).remove();
+                    }
+                },
+
+                events:
+                    all_bookings
+
+            });
+        });
+    </script> --}}
+
+<script type="text/javascript">
+    var myAPIdata = {{{ all_bookings }}};
+
+    // Function to handle event click
+    function handleEventClick(event) {
+        // Hide and show elements as needed
+        document.getElementById("form-event").classList.add("view-event");
+        document.getElementById("event-title").classList.replace("d-block", "d-none");
+        document.getElementById("event-location").classList.replace("d-block", "d-none");
+        document.getElementById("event-description").classList.replace("d-block", "d-none");
+        document.getElementById("event-location-tag").classList.replace("d-none", "d-block");
+        document.getElementById("event-description-tag").classList.replace("d-none", "d-block");
+        document.getElementById("event-duration").classList.replace("d-none", "d-block");
+        document.getElementById("event-start-date").classList.replace("d-none", "d-block");
+        document.getElementById("btn-save-event").setAttribute("hidden", true);
+
+        // Access event properties
+        var eventTitle = event.extendedProps.title || "";
+        var eventStartDate = event.extendedProps.start || "";
+        var eventLocationTag = event.extendedProps.appointmentType || "";
+        var eventDescriptionTag = event.extendedProps.description || "No Description";
+        var eventDuration = event.extendedProps.appointmentDuration || "No Description";
+        var eventId = event.id;
+        console.log("sdfghjkl;" ,eventId)
+
+        // Update elements with event information
+        document.getElementById("event-title").innerHTML = eventTitle;
+        document.getElementById("event-start-date").innerHTML = eventStartDate;
+        document.getElementById("event-location-tag").innerHTML = eventLocationTag;
+        document.getElementById("event-description-tag").innerHTML = eventDescriptionTag;
+        document.getElementById("event-duration").innerHTML = eventDuration;
+        document.getElementById("event-title").value = eventTitle;
+        document.getElementById("event-location").value = eventLocationTag;
+        document.getElementById("eventid").value = eventId;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        //API DATA........
+        console.log("Data......", myAPIdata);
+
+        // Create a FullCalendar instance
+        var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+            timeZone: "local",
+            editable: true,
+            droppable: true,
+            selectable: true,
+            navLinks: true,
+            themeSystem: "bootstrap",
+            headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+            },
+            events: myAPIdata,
+            eventClick: handleEventClick, // Use the handleEventClick function
+        });
+
+        // Render the calendar
+        calendar.render();
+    });
+</script>
+
+    <script src='fullcalendar/dist/index.global.js'></script>
+
+</body>
